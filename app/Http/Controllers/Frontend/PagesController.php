@@ -23,6 +23,11 @@ class PagesController extends Controller
     {
         return view('frontend.pages.services');    
     }
+    
+    public function blog()  
+    {
+        return view('frontend.pages.blog');
+    }
 
     public function contact()  
     {

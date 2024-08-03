@@ -6,7 +6,6 @@
     <!-- Page Header End -->
 
     <!-- Blog Start -->
-    
-
+    @include('frontend.include.blogs')
     <!-- Blog end -->
 @endsection

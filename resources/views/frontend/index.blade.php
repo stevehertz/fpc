@@ -30,14 +30,14 @@
     <!-- Membership -->
 
     <!-- Projects Start -->
-    @include('frontend.include.projects')
+    {{-- @include('frontend.include.projects') --}}
     <!-- Projects End -->
 
     <!-- Team Start -->
-    @include('frontend.include.team')
+    {{-- @include('frontend.include.team') --}}
     <!-- Team End -->
 
     <!-- Testimonial Start -->
-    @include('frontend.include.testimonials')
+    {{-- @include('frontend.include.testimonials') --}}
     <!-- Testimonial End -->
 @endsection

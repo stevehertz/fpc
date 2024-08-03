@@ -20,4 +20,6 @@ Route::get('/about', [PagesController::class, 'about'])->name('about.us');
 
 Route::get('/services', [PagesController::class, 'services'])->name('our.services');
 
+Route::get('/blogs', [PagesController::class, 'blog'])->name('blogs');
+
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact.us');

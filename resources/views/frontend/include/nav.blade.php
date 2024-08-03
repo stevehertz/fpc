@@ -13,7 +13,7 @@
             <a href="{{ route('about.us') }}" class="nav-item nav-link @if (Route::is('about.us')) active @endif">About</a>
             <a href="{{ route('our.services') }}" class="nav-item nav-link @if (Route::is('our.services')) active @endif">Services</a>
             <a href="" class="nav-item nav-link">Events</a>
-            <a href="" class="nav-item nav-link">Blogs</a>
+            <a href="{{ route('blogs') }}" class="nav-item nav-link @if (Route::is('blogs')) active @endif">Blogs</a>
             <a href="{{ route('contact.us') }}" class="nav-item nav-link  @if (Route::is('contact.us')) active @endif">Contact Us</a>
         </div>
         <a href="" class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">
