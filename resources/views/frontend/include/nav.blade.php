@@ -14,18 +14,7 @@
             <a href="{{ route('our.services') }}" class="nav-item nav-link @if (Route::is('our.services')) active @endif">Services</a>
             <a href="" class="nav-item nav-link">Events</a>
             <a href="" class="nav-item nav-link">Blogs</a>
-            <a href="" class="nav-item nav-link">T&amp;C</a>
-            {{-- <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                <div class="dropdown-menu bg-light m-0">
-                    <a href="feature.html" class="dropdown-item">Features</a>
-                    <a href="quote.html" class="dropdown-item">Free Quote</a>
-                    <a href="team.html" class="dropdown-item">Our Team</a>
-                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                    <a href="404.html" class="dropdown-item">404 Page</a>
-                </div>
-            </div> --}}
-            <a href="" class="nav-item nav-link">Contact</a>
+            <a href="{{ route('contact.us') }}" class="nav-item nav-link  @if (Route::is('contact.us')) active @endif">Contact Us</a>
         </div>
         <a href="" class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">
             Become a member<i class="fa fa-arrow-right ms-3"></i>

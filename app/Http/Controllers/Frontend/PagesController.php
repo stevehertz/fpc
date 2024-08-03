@@ -23,4 +23,9 @@ class PagesController extends Controller
     {
         return view('frontend.pages.services');    
     }
+
+    public function contact()  
+    {
+        return view('frontend.pages.contact');
+    }
 }
