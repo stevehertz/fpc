@@ -18,16 +18,22 @@
                 <div class="row g-5">
                     <div class="col-12 col-sm-6 col-lg-12">
                         <div class="border-start ps-4">
-                            <i class="fa fa-award fa-3x text-primary mb-3"></i>
-                            <h4 class="mb-3">Award Winning</h4>
-                            <span>Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna</span>
+                            <i class="fas fa-eye fa-3x text-primary mb-3"></i>
+                            <h4 class="mb-3">Our Vision</h4>
+                            <span>
+                                The preferred Business Member Organization that excels in provision of advocacy and
+                                business support services for its members.
+                            </span>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-lg-12">
                         <div class="border-start ps-4">
-                            <i class="fa fa-users fa-3x text-primary mb-3"></i>
-                            <h4 class="mb-3">Dedicated Team</h4>
-                            <span>Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna</span>
+                            <i class="fas fa-binoculars fa-3x text-primary mb-3"></i>
+                            <h4 class="mb-3">Our Mission</h4>
+                            <span>
+                                Committed to promoting growth and success of members through sustainable production and
+                                supply of high quality fresh horticultural produce to domestic and regional markets.
+                            </span>
                         </div>
                     </div>
                 </div>

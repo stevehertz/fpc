@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Backend\DashboardController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,3 +14,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Auth::routes();
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

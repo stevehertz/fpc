@@ -8,8 +8,10 @@
                             <i class="fa fa-times text-primary"></i>
                         </div>
                         <div class="ps-3">
-                            <h4>No Hidden Cost</h4>
-                            <span>Clita erat ipsum lorem sit sed stet duo justo</span>
+                            <h4>Promote Growth</h4>
+                            <span>
+                                Our current mandate is to promote growth
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -22,7 +24,9 @@
                         </div>
                         <div class="ps-3">
                             <h4>Dedicated Team</h4>
-                            <span>Clita erat ipsum lorem sit sed stet duo justo</span>
+                            <span>
+                                We're governed by a board of 9 people dedicated to the vision
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -35,7 +39,9 @@
                         </div>
                         <div class="ps-3">
                             <h4>24/7 Available</h4>
-                            <span>Clita erat ipsum lorem sit sed stet duo justo</span>
+                            <span>
+                                We're dedicated to provide services to our members 24/7 
+                            </span>
                         </div>
                     </div>
                 </div>
