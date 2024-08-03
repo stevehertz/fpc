@@ -18,4 +18,9 @@ class PagesController extends Controller
     {
         return view('frontend.pages.about');    
     }
+
+    public function services()  
+    {
+        return view('frontend.pages.services');    
+    }
 }

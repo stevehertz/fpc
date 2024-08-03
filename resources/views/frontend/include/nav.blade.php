@@ -10,8 +10,8 @@
             <a href="{{ route('home') }}" class="nav-item nav-link @if (Route::is('home')) active @endif ">
                 Home
             </a>
-            <a href="{{ route('about.us') }}" class="nav-item nav-link @if (Route::is('about')) active @endif">About</a>
-            <a href="" class="nav-item nav-link">Services</a>
+            <a href="{{ route('about.us') }}" class="nav-item nav-link @if (Route::is('about.us')) active @endif">About</a>
+            <a href="{{ route('our.services') }}" class="nav-item nav-link @if (Route::is('our.services')) active @endif">Services</a>
             <a href="" class="nav-item nav-link">Events</a>
             <a href="" class="nav-item nav-link">Blogs</a>
             <a href="" class="nav-item nav-link">T&amp;C</a>
