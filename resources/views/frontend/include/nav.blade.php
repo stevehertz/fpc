@@ -7,8 +7,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="" class="nav-item nav-link active">Home</a>
-            <a href="" class="nav-item nav-link">About</a>
+            <a href="{{ route('home') }}" class="nav-item nav-link @if (Route::is('home')) active @endif ">
+                Home
+            </a>
+            <a href="{{ route('about.us') }}" class="nav-item nav-link @if (Route::is('about')) active @endif">About</a>
             <a href="" class="nav-item nav-link">Services</a>
             <a href="" class="nav-item nav-link">Events</a>
             <a href="" class="nav-item nav-link">Blogs</a>
