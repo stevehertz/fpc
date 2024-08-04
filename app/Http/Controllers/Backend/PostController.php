@@ -85,9 +85,13 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
         //
+        $data = $this->postsRepository->showPost($id);
+        return view('backend.posts.edit', [
+            'data' => $data
+        ]);
     }
 
     /**
@@ -104,5 +108,12 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+        if($this->postsRepository->destroyPost($post))
+        {
+            return response()->json([
+                'status' => true,
+                'message' => 'Successfully removed post'
+            ]);
+        }
     }
 }

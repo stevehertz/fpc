@@ -1,5 +1,6 @@
 <?php 
 
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Request;
 
@@ -63,5 +64,18 @@ if (!function_exists('generateBreadcrumb')) {
         }
 
         return $breadcrumbs;
+    }
+}
+
+if (! function_exists('getFirstParagraph')) {
+    function getFirstParagraph($content, $limit = 150) {
+        $first_paragraph = '';
+        $dom = new \DOMDocument();
+        @$dom->loadHTML($content);
+        $paragraphs = $dom->getElementsByTagName('p');
+        if ($paragraphs->length > 0) {
+            $first_paragraph = $paragraphs->item(0)->textContent;
+        }
+        return Str::limit($first_paragraph, $limit, '...');
     }
 }

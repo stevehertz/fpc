@@ -28,7 +28,7 @@ class PostsRepository
 
             // upload featured image
             if ($featureImage) {
-                $path = $featureImage->store('images/posts', 'public');
+                $path = $featureImage->store('img/posts', 'public');
                 $post->update(['featured_image' => $path]);
             }
 
@@ -52,5 +52,11 @@ class PostsRepository
 
     public function destroyPost(Post $post)
     {
+        if($post->delete())
+        {
+            return true;
+        }
+
+        return false;
     }
 }

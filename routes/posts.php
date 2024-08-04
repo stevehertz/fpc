@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('posts')->name('posts.')->group(function () {
 
-    Route::get('/index', [PostController::class, 'index'])->name('index');
+    Route::get('/', [PostController::class, 'index'])->name('index');
     Route::get('/create', [PostController::class, 'create'])->name('create');
     Route::post('/upload', [PostController::class, 'upload'])->name('upload');
     Route::post('/store', [PostController::class, 'store'])->name('store');

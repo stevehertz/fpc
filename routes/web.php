@@ -18,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/welcome', function(){
+    return redirect()->route('login');
+});

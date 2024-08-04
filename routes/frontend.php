@@ -22,4 +22,6 @@ Route::get('/services', [PagesController::class, 'services'])->name('our.service
 
 Route::get('/blogs', [PagesController::class, 'blog'])->name('blogs');
 
+Route::get('/{slug}/details', [PagesController::class, 'blogDetails'])->name('blog.details');
+
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact.us');
