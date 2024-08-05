@@ -47,6 +47,10 @@ class PagesController extends Controller
         ]);
     }
 
+    public function events()  {
+        return view('frontend.pages.events');
+    }
+
     public function contact()  
     {
         return view('frontend.pages.contact');
