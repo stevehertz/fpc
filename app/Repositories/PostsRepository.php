@@ -21,7 +21,7 @@ class PostsRepository
         if ($user) {
             $post = $user->post()->create([
                 'title' => data_get($attributes, 'title'),
-                'featured_image' => 'noimage.png',
+                'featured_image' => 'img/posts/noimage.png',
                 'content' => data_get($attributes, 'content'),
                 'slug' =>  Str::slug(data_get($attributes, 'title')),
             ]);

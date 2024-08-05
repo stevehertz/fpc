@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
-    <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+    <a href="{{ route('home') }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
         <img src="{{ asset(config('app.logo')) }}" alt="{{ config('app.name') }}" width="70">
     </a>
     <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
