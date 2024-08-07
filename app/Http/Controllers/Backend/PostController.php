@@ -77,9 +77,13 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show($id)
     {
         //
+        return response()->json([
+            'status' => true,
+            'data' => $this->postsRepository->showPost($id)
+        ]);
     }
 
     /**
@@ -100,6 +104,20 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, Post $post)
     {
         //
+        if ($request->hasFile('featured_image')) {
+            $featureImage = $request->file('featured_image');
+        } else {
+            $featureImage = null;
+        }
+
+        $posts = $this->postsRepository->updatePost($request->all(), $post, $featureImage);
+
+        if ($posts) {
+            return response()->json([
+                'status' => true,
+                'message' => 'Post updated successfully.'
+            ], 200);
+        }
     }
 
     /**

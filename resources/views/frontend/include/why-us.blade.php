@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row g-5 align-items-center">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                <p class="fs-5 fw-bold text-primary">Why Choosing Us!</p>
-                <h1 class="display-5 mb-4">Few Reasons Why People Choosing Us!</h1>
+                <p class="fs-5 fw-bold text-primary">Why Choose Us!</p>
+                <h1 class="display-5 mb-4">Few Reasons Why People Choose Us!</h1>
                 <p class="mb-4">
                     As a trade association, FPC Kenya is dedicated to promoting the expansion and prosperity of fresh
                     produce businesses in Kenya as well as those of its partners. Our commitment is based on a thorough

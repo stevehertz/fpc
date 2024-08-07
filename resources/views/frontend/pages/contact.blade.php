@@ -12,10 +12,10 @@
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <p class="fs-5 fw-bold text-primary">Contact Us</p>
                     <h1 class="display-5 mb-5">
-                        Get in contact with us if you have any questions.
+                        Get in touch with us.
                     </h1>
                     <p class="mb-4">
-                        We hope to hear from you soon. Please contact us via phone, email, or in person at our offices as
+                        We hope to hear from you soon. Please contact us via phone <b>+(254)722408210</b>, email, or in person at our offices as
                         instructed.
                     </p>
                     <form>

@@ -7,7 +7,7 @@
             <div class="col-lg-6 col-md-7 wow fadeInUp" data-wow-delay="0.3s">
                 <h1 class="display-1 text-primary mb-0">11</h1>
                 <p class="text-primary mb-4">Year of Experience</p>
-                <h1 class="display-5 mb-4">Conducive national and international business enviroment</h1>
+                <h1 class="display-5 mb-4">Conducive business enviroment</h1>
                 <p class="mb-4">
                     We influence and advocates for a conducive national and international business enviroment, policies
                     and trade agreements on behalf of our members and the horticulture industry in Kenya.

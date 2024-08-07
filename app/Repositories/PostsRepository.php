@@ -46,14 +46,28 @@ class PostsRepository
         return Post::with(['user'])->where('slug', $slug)->firstOrFail();
     }
 
-    public function updatePost(array $attributes, Post $post)
+    public function updatePost(array $attributes, Post $post, ?UploadedFile $featureImage = null)
     {
+
+        $post->update([
+            'title' => data_get($attributes, 'title'),
+            'featured_image' => 'img/posts/noimage.png',
+            'content' => data_get($attributes, 'content'),
+            'slug' =>  Str::slug(data_get($attributes, 'title')),
+        ]);
+
+        // upload featured image
+        if ($featureImage) {
+            $path = $featureImage->store('img/posts', 'public');
+            $post->update(['featured_image' => $path]);
+        }
+
+        return $post;
     }
 
     public function destroyPost(Post $post)
     {
-        if($post->delete())
-        {
+        if ($post->delete()) {
             return true;
         }
 

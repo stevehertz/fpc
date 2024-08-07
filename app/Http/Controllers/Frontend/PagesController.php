@@ -33,7 +33,7 @@ class PagesController extends Controller
     
     public function blog()  
     {
-        $posts = Post::latest()->get();
+        $posts = Post::latest()->paginate(6);
         return view('frontend.pages.blog', [
             'data' => $posts
         ]);

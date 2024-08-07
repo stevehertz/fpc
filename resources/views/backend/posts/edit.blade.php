@@ -61,7 +61,9 @@
                                                 Content
                                             </label>
                                             <textarea id="newPostContent" name="content">
-                                                @isset($data){!! $data->content !!}@endisset
+                                                @isset($data)
+{!! $data->content !!}
+@endisset
                                             </textarea>
                                         </div>
                                     </div>
@@ -98,8 +100,7 @@
                             @isset($data)
                                 @if ($data->featured_image)
                                     {{-- {{ $data->featured_image  }} --}}
-                                    <img class="img-fluid pad" src="{{ asset('img/'.$data->featured_image) }}"
-                                        alt="Photo">
+                                    <img class="img-fluid pad" src="{{ asset('img/' . $data->featured_image) }}" alt="Photo">
                                 @else
                                     <img class="img-fluid pad" src="{{ asset('img/backend/default-150x150.png') }}"
                                         alt="Photo">
@@ -195,6 +196,53 @@
                     }
                 });
             });
+
+            @isset($data)
+                $('#updatePostForm').submit(function(e) {
+                    e.preventDefault();
+                    let form = $(this);
+                    let formData = new FormData(form[0]);
+                    formData.append('content', $('#newPostContent').val());
+                    let path = '{{ route('posts.update', $data->id) }}';
+                    $.ajax({
+                        type: "POST",
+                        url: path,
+                        data: formData,
+                        dataType: "json",
+                        contentType: false,
+                        processData: false,
+                        beforeSend: function() {
+                            form.find('button[type=submit]').html(
+                                '<i class="fa fa-spinner fa-spin"></i>'
+                            );
+                            form.find('button[type=submit]').attr('disabled', true);
+                        },
+                        complete: function() {
+                            form.find('button[type=submit]').html(
+                                'Update'
+                            );
+                            form.find('button[type=submit]').attr('disabled', false);
+                        },
+                        success: function(data) {
+                            if (data['status']) {
+                                toastr.success(data['message']);
+                                setTimeout(() => {
+                                    window.location.href = '{{ route('posts.index') }}'
+                                }, 1000);
+                            }
+                        },
+                        error: function(data) {
+                            var errors = data.responseJSON;
+                            var errorsHtml = '<ul>';
+                            $.each(errors['errors'], function(key, value) {
+                                errorsHtml += '<li>' + value + '</li>';
+                            });
+                            errorsHtml += '</ul>';
+                            toastr.error(errorsHtml);
+                        }
+                    });
+                });
+            @endisset
         });
     </script>
 @endpush

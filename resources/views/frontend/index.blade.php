@@ -29,6 +29,10 @@
     @include('frontend.include.membership')
     <!-- Membership -->
 
+    <!-- Conversations Start -->
+    @include('frontend.include.conversations')
+    <!-- Conversations End -->
+
     <!-- Projects Start -->
     {{-- @include('frontend.include.projects') --}}
     <!-- Projects End -->

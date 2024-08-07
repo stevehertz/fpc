@@ -2,7 +2,7 @@
     <div class="container">
         <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
             <p class="fs-5 fw-bold text-primary">Our Services</p>
-            <h1 class="display-5 mb-5">Services That We Offer For You</h1>
+            <h1 class="display-5 mb-5">Services That We Offer You</h1>
         </div>
         <div class="row g-4">
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -16,9 +16,8 @@
                         </div>
                         <h4 class="mb-3">Lobbying and advocacy</h4>
                         <p class="mb-4">
-                            On behalf of its members and the Kenyan horticultural industry, FPC Kenya influences and
-                            promotes trade agreements, policies, and a favorable national and international business
-                            environment.
+                            FPC Kenya influences and promotes trade agreements, policies, and a favorable national and international business
+                            environment on behalf of its members and Kenyan horticultural industry.
                         </p>
                         <a class="btn btn-sm" href="">
                             <i class="fa fa-plus text-primary me-2"></i>Read More
@@ -35,7 +34,7 @@
                         <div class="btn-square rounded-circle mx-auto mb-3">
                             <img class="img-fluid" src="{{ asset('img/icon/icon-6.png') }}" alt="Icon">
                         </div>
-                        <h4 class="mb-3">Marketing access &amp; linkages</h4>
+                        <h4 class="mb-3">Market access &amp; linkages</h4>
                         <p class="mb-4">
                             In Kenya agriculture is fundamental in economic development as it contributes to 35 per cent
                             of the gross domestic product (GDP) and constitutes 40 per cent of the export earnings.
