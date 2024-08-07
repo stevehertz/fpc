@@ -42,8 +42,10 @@ class PagesController extends Controller
     public function blogDetails($slug)  
     {
         $post = $this->postsRepository->showPostBySlug($slug);
+        $relatedPosts = Post::where('slug', '!=', $post->slug)->limit(6)->get();
         return view('frontend.pages.blog-details', [
-            'data' => $post
+            'data' => $post,
+            'relatedPosts' => $relatedPosts
         ]);
     }
 

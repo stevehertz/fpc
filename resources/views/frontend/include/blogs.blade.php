@@ -15,7 +15,7 @@
                         </a>
                         <div class="text pt-4">
                             <h3 class="heading">
-                                <a href="#">
+                                <a href="{{ route('blog.details', $post->slug) }}">
                                     {{ $post->title }}
                                 </a>
                             </h3>
