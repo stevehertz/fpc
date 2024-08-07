@@ -44,7 +44,7 @@
             <div class="col-lg-3 col-md-6">
                 <h4 class="text-white mb-4">Newsletter</h4>
                 <p>
-                    Sign up for our FPS Kenya newsletter now to stay up to date with the newest tech sales and special offers!
+                    Sign up for our FPC Kenya newsletter now to stay up to date with the newest tech sales and special offers!
                 </p>
                 <div class="position-relative w-100">
                     <input class="form-control bg-light border-light w-100 py-3 ps-4 pe-5" type="text"

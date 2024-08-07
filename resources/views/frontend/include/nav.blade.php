@@ -16,7 +16,7 @@
             <a href="{{ route('blogs') }}" class="nav-item nav-link @if (Route::is('blogs')) active @endif">Blogs</a>
             <a href="{{ route('contact.us') }}" class="nav-item nav-link  @if (Route::is('contact.us')) active @endif">Contact Us</a>
         </div>
-        <a href="#" class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block">
+        <a href="{{ route('become.member') }}" class="btn btn-primary py-4 px-lg-4 rounded-0 d-none d-lg-block" target="_blank">
             Become a member<i class="fa fa-arrow-right ms-3"></i>
         </a>
     </div>

@@ -26,4 +26,8 @@ Route::get('/{slug}/details', [PagesController::class, 'blogDetails'])->name('bl
 
 Route::get('/events', [PagesController::class, 'events'])->name('events');
 
+Route::get('/faqs', [PagesController::class, 'faqs'])->name('faqs');
+
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact.us');
+
+Route::get('/become/member', [PagesController::class, 'becomeMember'])->name('become.member');

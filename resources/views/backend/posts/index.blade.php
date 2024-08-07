@@ -35,10 +35,17 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $post->title }}</td>
                                             <td>{{ $post->user->first_name }} {{ $post->user->last_name }}</td>
-                                            <td>{{ $post->created_at->format('d M Y') }}</td>
+                                            <td>
+                                                @isset($post->posted_at)
+                                                    {{ date('d M Y', strtotime($post->posted_at)) }}
+                                                @else
+                                                    {{ $post->created_at->format('d M Y') }}
+                                                @endisset
+                                            </td>
                                             <td class="col-sm-2">
                                                 @if (!$post->deleted_at)
-                                                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning btn-sm">
+                                                    <a href="{{ route('posts.edit', $post->id) }}"
+                                                        class="btn btn-warning btn-sm">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
                                                     <button type="button" class="btn btn-danger btn-sm deletePostBtn"

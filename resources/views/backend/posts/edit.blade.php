@@ -71,6 +71,25 @@
                                 </div>
                                 <!--/.row -->
 
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label>Date Posted:</label>
+                                            <div class="input-group date" id="reservationdatetime"
+                                                data-target-input="nearest">
+                                                <input type="text" name="posted_at" placeholder="Date Posted"
+                                                    class="form-control datetimepicker-input"
+                                                    data-target="#reservationdatetime" />
+                                                <div class="input-group-append" data-target="#reservationdatetime"
+                                                    data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.form group -->
+                                    </div>
+                                </div>
+                                <!--/.row -->
                             </div>
                             <!--/.card-body -->
                             <div class="card-footer">
@@ -123,6 +142,15 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
+
+            //Date and time picker
+            $('#reservationdatetime').datetimepicker({
+                format: 'YYYY-MM-DD hh:mm:ss',
+                icons: {
+                    time: 'far fa-clock'
+                }
+            });
+
             // Summernote
             $('#newPostContent').summernote({
                 height: 300,

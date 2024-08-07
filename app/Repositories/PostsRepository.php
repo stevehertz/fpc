@@ -24,6 +24,7 @@ class PostsRepository
                 'featured_image' => 'img/posts/noimage.png',
                 'content' => data_get($attributes, 'content'),
                 'slug' =>  Str::slug(data_get($attributes, 'title')),
+                'posted_at' => data_get($attributes, 'posted_at')
             ]);
 
             // upload featured image
@@ -54,6 +55,7 @@ class PostsRepository
             'featured_image' => 'img/posts/noimage.png',
             'content' => data_get($attributes, 'content'),
             'slug' =>  Str::slug(data_get($attributes, 'title')),
+            'posted_at' => data_get($attributes, 'posted_at')
         ]);
 
         // upload featured image

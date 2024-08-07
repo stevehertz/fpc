@@ -16,7 +16,8 @@ class Post extends Model
         'title', 
         'featured_image',
         'content', 
-        'slug'
+        'slug',
+        'posted_at'
     ];
 
     protected $dates = [

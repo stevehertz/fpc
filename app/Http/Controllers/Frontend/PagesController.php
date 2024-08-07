@@ -11,6 +11,7 @@ class PagesController extends Controller
 {
     //
     private $postsRepository;
+
     public function __construct(PostsRepository $postsRepository)
     {
         $this->postsRepository = $postsRepository;   
@@ -53,8 +54,27 @@ class PagesController extends Controller
         return view('frontend.pages.events');
     }
 
+    public function faqs()  
+    {
+        return view('frontend.pages.faqs');    
+    }
+
     public function contact()  
     {
         return view('frontend.pages.contact');
+    }
+
+    public function becomeMember()  
+    {
+        $filePath = public_path('membership/FPC-Kenya-Registration-Form-2020.docx');
+
+        if (!file_exists($filePath)) {
+            abort(404);
+        }
+
+        return response()->download($filePath, "FPC-Kenya-Registration-Form-2020.docx", [
+            'Content-Type' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        ]);
+
     }
 }
