@@ -23,9 +23,11 @@
                                 {{ getFirstParagraph($post->content) }}
                             </p>
                             <div class="d-flex align-items-center mt-4">
-                                <p class="mb-0"><a href="{{ route('blog.details', $post->slug) }}"
-                                        class="btn btn-primary">Read More <span
-                                            class="ion-ios-arrow-round-forward"></span></a></p>
+                                <p class="mb-0">
+                                    <a href="{{ route('blog.details', $post->slug) }}"
+                                        class="btn btn-primary">
+                                        Read More <i
+                                            class="fas fa-angle-double-right"></i></a></p>
                                 <p class="ml-auto mb-0">
                                     <a href="#" class="mr-2">
                                         {{ $post->user->first_name }} {{ $post->user->last_name }}

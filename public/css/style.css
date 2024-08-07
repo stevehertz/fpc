@@ -316,7 +316,6 @@ h6,
   border-top: 0;
   border-radius: 2px;
 }
-
 .blog-entry .text .heading {
   font-size: 20px;
   margin-bottom: 16px;
@@ -382,62 +381,6 @@ h6,
   display: block;
 }
 
-.p-4 {
-  padding: 1.5rem !important;
-}
-
-.pt-4,
-.py-4 {
-  padding-top: 1.5rem !important;
-}
-
-.mb-auto,
-.my-auto {
-  margin-bottom: auto !important;
-}
-
-.ml-auto,
-.mx-auto {
-  margin-left: auto !important;
-}
-
-.mb-0,
-.my-0 {
-  margin-bottom: 0 !important;
-}
-
-.mr-2,
-.mx-2 {
-  margin-right: 0.5rem !important;
-}
-
-.m-5 {
-  margin: 3rem !important;
-}
-
-.mt-5,
-.my-5 {
-  margin-top: 3rem !important;
-}
-
-.mb-4,
-.my-4 {
-  margin-bottom: 1.5rem !important;
-}
-
-.mr-4,
-.mx-4 {
-  margin-right: 1.5rem !important;
-}
-
-.d-flex {
-  display: flex !important;
-}
-
-.d-inline-flex {
-  display: inline-flex !important;
-}
-
 .block-27 ul {
   padding: 0;
   margin: 0;
@@ -464,6 +407,14 @@ h6,
   background: var(--primary);
   color: #fff;
   border: 1px solid transparent;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.d-inline-flex {
+  display: inline-flex !important;
 }
 
 .no-gutters {
@@ -535,6 +486,59 @@ h6,
 
 .block-21 .text .meta > div a {
   color: gray;
+}
+
+.mt-4,
+.my-4 {
+  margin-top: 1.5rem !important;
+}
+
+.mb-0,
+.my-0 {
+  margin-bottom: 0 !important;
+}
+
+.ml-auto,
+.mx-auto {
+  margin-left: auto !important;
+}
+
+.mb-4,
+.my-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+.mr-4,
+.mx-4 {
+  margin-right: 1.5rem !important;
+}
+
+.pt-4 {
+  padding-top: 1.5rem !important;
+}
+
+.mb-auto,
+.my-auto {
+  margin-bottom: auto !important;
+}
+
+.mb-0,
+.my-0 {
+  margin-bottom: 0 !important;
+}
+
+.mr-2,
+.mx-2 {
+  margin-right: 0.5rem !important;
+}
+
+.m-5 {
+  margin: 3rem !important;
+}
+
+.mt-5,
+.my-5 {
+  margin-top: 3rem !important;
 }
 
 /*** Project Portfolio ***/
@@ -614,6 +618,12 @@ h6,
 .portfolio-inner .portfolio-text .btn:hover {
   background: var(--primary);
   color: var(--light);
+}
+
+/*** Contact Us ***/
+.box {
+  width: 100%;
+  display: block;
 }
 
 /*** Team ***/

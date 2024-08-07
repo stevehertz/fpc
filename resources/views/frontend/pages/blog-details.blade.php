@@ -36,7 +36,7 @@
                                                 <a href="#">
                                                     <i class="fas fa-calendar"></i> {{ $rPost->created_at->format('M') }} {{ $rPost->created_at->format('d') }}, {{ $rPost->created_at->format('Y') }}</a>
                                             </div>
-                                            <div><a href="#"><span class="icon-person"></span> {{ $rPost->user->first_name }} {{ $rPost->user->last_name }}</a></div>
+                                            <div><a href="#"><i class="fas fa-user"></i> {{ $rPost->user->first_name }} {{ $rPost->user->last_name }}</a></div>
                                             {{-- <div><a href="#"><span class="icon-chat"></span> 19</a></div> --}}
                                         </div>
                                     </div>

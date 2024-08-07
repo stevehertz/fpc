@@ -15,7 +15,8 @@
                         Get in touch with us.
                     </h1>
                     <p class="mb-4">
-                        We hope to hear from you soon. Please contact us via phone <b>+(254)722408210</b>, email, or in person at our offices as
+                        We hope to hear from you soon. Please contact us via phone, email, or in
+                        person at our offices as
                         instructed.
                     </p>
                     <form>
@@ -28,7 +29,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="phone" placeholder="Your Phone Number">
+                                    <input type="text" class="form-control" id="phone"
+                                        placeholder="Your Phone Number">
                                     <label for="phone">Phone Number</label>
                                 </div>
                             </div>
@@ -62,6 +64,35 @@
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.740692778442!2d36.85740487802846!3d-1.3316962951894333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f11f0d0310323%3A0x13fac0d96ed6745d!2sPlaza%202000!5e0!3m2!1sen!2ske!4v1722644951044!5m2!1sen!2ske"
                             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row g-5">
+                <div class="col-md-3 d-flex">
+                    <div class="bg-light d-flex align-self-stretch box p-4">
+                        <p><span>Address:</span> Plaza 2000, 3rd floor, Mombasa Road, Nairobi, Kenya</p>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex">
+                    <div class="bg-light d-flex align-self-stretch box p-4">
+                        <p>
+                            <span>Mobile No:</span> <a href="tel://+(254)722408210">+(254)722408210</a>
+                            <span>Office No:</span> <a href="tel://+(254)707407676">+(254)707407676</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex">
+                    <div class="bg-light d-flex align-self-stretch box p-4">
+                        <p>
+                            <span>Email:</span> <a href="mailto:info@fpckenya.co.ke">info@fpckenya.co.ke</a>
+                            <span>&nbsp;</span> <a href="mailto:ceo@fpckenya.co.ke">ceo@fpckenya.co.ke</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex">
+                    <div class="bg-light d-flex align-self-stretch box p-4">
+                        <p><span>Website</span> <a href="{{ route('home') }}">https://fpckenya.co.ke/</a></p>
                     </div>
                 </div>
             </div>
