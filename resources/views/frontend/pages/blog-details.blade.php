@@ -24,19 +24,30 @@
                             <h3>Related Articles</h3>
                             @forelse ($relatedPosts as $rPost)
                                 <div class="block-21 mb-4 d-flex">
-                                    <a class="blog-img mr-4" style="background-image: url({{ asset('img/' . $rPost->featured_image) }});"></a>
+                                    <a class="blog-img mr-4"
+                                        style="background-image: url({{ asset('img/' . $rPost->featured_image) }});"></a>
                                     <div class="text">
                                         <h3 class="heading">
                                             <a href="{{ route('blog.details', $rPost->slug) }}">
-                                               {{ $rPost->title }}
+                                                {{ $rPost->title }}
                                             </a>
                                         </h3>
                                         <div class="meta">
                                             <div>
                                                 <a href="#">
-                                                    <i class="fas fa-calendar"></i> {{ $rPost->created_at->format('M') }} {{ $rPost->created_at->format('d') }}, {{ $rPost->created_at->format('Y') }}</a>
+                                                    <i class="fas fa-calendar"></i> @isset($rPost->posted_at)
+                                                        {{ date('M', strtotime($rPost->posted_at)) }}
+                                                        {{ date('d', strtotime($rPost->posted_at)) }},
+                                                        {{ date('Y', strtotime($rPost->posted_at)) }}
+                                                    @else
+                                                        {{ $rPost->created_at->format('M') }}
+                                                        {{ $rPost->created_at->format('d') }},
+                                                        {{ $rPost->created_at->format('Y') }}
+                                                    @endisset
+                                                </a>
                                             </div>
-                                            <div><a href="#"><i class="fas fa-user"></i> {{ $rPost->user->first_name }} {{ $rPost->user->last_name }}</a></div>
+                                            <div><a href="#"><i class="fas fa-user"></i>
+                                                    {{ $rPost->user->first_name }} {{ $rPost->user->last_name }}</a></div>
                                             {{-- <div><a href="#"><span class="icon-chat"></span> 19</a></div> --}}
                                         </div>
                                     </div>

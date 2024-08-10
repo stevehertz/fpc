@@ -1,4 +1,4 @@
-<div class="container-fluid quote my-5 py-5" data-parallax="scroll" data-image-src="{{ asset('img/carousel-2.jpg') }}">
+<div class="container-fluid quote my-5 py-5" data-parallax="scroll" data-image-src="{{ asset('img/carousel/carousel-2.jpg') }}">
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-lg-7 text-center">

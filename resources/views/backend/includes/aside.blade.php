@@ -43,7 +43,7 @@
                     <a href="{{ route('dashboard') }}" class="nav-link @if (Route::is('dashboard')) active @endif">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Dashboard
+                            @lang('backend.dashboard')
                         </p>
                     </a>
                 </li>
@@ -51,10 +51,29 @@
                     <a href="{{ route('posts.index') }}" class="nav-link @if (Route::is('posts.index')) active @endif">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Blogs
+                            @lang('backend.blogs')
                         </p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('posts.index') }}" class="nav-link @if (Route::is('posts.index')) active @endif">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            @lang('backend.teams')
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('posts.index') }}" class="nav-link @if (Route::is('posts.index')) active @endif">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            @lang('backend.services')
+                        </p>
+                    </a>
+                </li>
+                
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
@@ -115,6 +134,7 @@
                         </li>
                     </ul>
                 </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>

@@ -77,4 +77,14 @@ class PagesController extends Controller
         ]);
 
     }
+
+    public function terms_and_conditions()  
+    {
+        return view('frontend.pages.terms-and-conditions');    
+    }
+
+    public function who_we_are()  
+    {
+        return view('frontend.pages.who-we-are');    
+    }
 }

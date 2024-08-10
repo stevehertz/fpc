@@ -27,19 +27,19 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <h4 class="text-white mb-4">Services</h4>
-                <a class="btn btn-link" href="">Lobbying and Advocacy</a>
-                <a class="btn btn-link" href="">Marketing access &amp; linkages</a>
-                <a class="btn btn-link" href="">Commercial representations</a>
-                <a class="btn btn-link" href="">Technical training</a>
-                <a class="btn btn-link" href="">Food safety management</a>
+                <a class="btn btn-link" href="{{ route('our.services') }}">Lobbying and Advocacy</a>
+                <a class="btn btn-link" href="{{ route('our.services') }}">Marketing access &amp; linkages</a>
+                <a class="btn btn-link" href="{{ route('our.services') }}">Commercial representations</a>
+                <a class="btn btn-link" href="{{ route('our.services') }}">Technical training</a>
+                <a class="btn btn-link" href="{{ route('our.services') }}">Food safety management</a>
             </div>
             <div class="col-lg-3 col-md-6">
                 <h4 class="text-white mb-4">Quick Links</h4>
-                <a class="btn btn-link" href="">Who we are</a>
-                <a class="btn btn-link" href="">Our Services</a>
-                <a class="btn btn-link" href="">Contact Us</a>
-                <a class="btn btn-link" href="">Terms & Condition</a>
-                <a class="btn btn-link" href="">Become a member</a>
+                <a class="btn btn-link" href="{{ route('who.we.are') }}">Who we are</a>
+                <a class="btn btn-link" href="{{ route('our.services') }}">Our Services</a>
+                <a class="btn btn-link" href="{{ route('contact.us') }}">Contact Us</a>
+                <a class="btn btn-link" href="{{ route('terms.and.conditions') }}">Terms & Condition</a>
+                <a class="btn btn-link" href="{{ route('become.member') }}">Become a member</a>
             </div>
             <div class="col-lg-3 col-md-6">
                 <h4 class="text-white mb-4">Newsletter</h4>

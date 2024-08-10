@@ -2,7 +2,11 @@
     <div class="container">
         <div class="row g-5 align-items-center">
             <div class="col-lg-3 col-md-5 wow fadeInUp" data-wow-delay="0.1s">
-                <img class="img-fluid rounded" data-wow-delay="0.1s" src="img/about.jpg">
+                @if (Route::is('about.us'))
+                    <img class="img-fluid rounded" data-wow-delay="0.1s" src="{{ asset('img/teams/photo-1.jpg') }}">
+                @else
+                    <img class="img-fluid rounded" data-wow-delay="0.1s" src="{{ asset('img/about.jpg') }}">
+                @endif
             </div>
             <div class="col-lg-6 col-md-7 wow fadeInUp" data-wow-delay="0.3s">
                 <h1 class="display-1 text-primary mb-0">11</h1>
@@ -12,7 +16,7 @@
                     We influence and advocates for a conducive national and international business enviroment, policies
                     and trade agreements on behalf of our members and the horticulture industry in Kenya.
                 </p>
-                <a class="btn btn-primary py-3 px-4" href="">Explore More</a>
+                <a class="btn btn-primary py-3 px-4" href="{{ route('who.we.are') }}">Explore More</a>
             </div>
             <div class="col-lg-3 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="row g-5">

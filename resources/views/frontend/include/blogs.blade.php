@@ -8,9 +8,16 @@
                             style="background-image: url(' @if ($post->featured_image) {{ asset('img/' . $post->featured_image) }}  @else {{ asset('img/backend/default-150x150.png') }} @endif');"
                             alt="{{ $post->title }}">
                             <div class="meta-date text-center p-2">
-                                <span class="day">{{ $post->created_at->format('D') }}</span>
-                                <span class="mos">{{ $post->created_at->format('M') }}</span>
-                                <span class="yr">{{ $post->created_at->format('Y') }}</span>
+                                @isset($post->posted_at)
+                                    <span class="day">{{ date('D', strtotime($post->posted_at)) }}</span>
+                                    <span class="mos">{{ date('M', strtotime($post->posted_at)) }}</span>
+                                    <span class="yr">{{  date('Y', strtotime($post->posted_at)) }}</span>
+                                @else
+                                    <span class="day">{{ $post->created_at->format('D') }}</span>
+                                    <span class="mos">{{ $post->created_at->format('M') }}</span>
+                                    <span class="yr">{{ $post->created_at->format('Y') }}</span>
+                                @endisset
+
                             </div>
                         </a>
                         <div class="text pt-4">
@@ -24,10 +31,9 @@
                             </p>
                             <div class="d-flex align-items-center mt-4">
                                 <p class="mb-0">
-                                    <a href="{{ route('blog.details', $post->slug) }}"
-                                        class="btn btn-primary">
-                                        Read More <i
-                                            class="fas fa-angle-double-right"></i></a></p>
+                                    <a href="{{ route('blog.details', $post->slug) }}" class="btn btn-primary">
+                                        Read More <i class="fas fa-angle-double-right"></i></a>
+                                </p>
                                 <p class="ml-auto mb-0">
                                     <a href="#" class="mr-2">
                                         {{ $post->user->first_name }} {{ $post->user->last_name }}

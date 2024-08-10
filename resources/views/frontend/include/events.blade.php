@@ -24,6 +24,7 @@
                     </div> --}}
                 </div>
             </div>
+
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="team-item rounded">
                     <img class="img-fluid" src="{{ asset('img/events/event-2.jpg') }}" alt="">
@@ -41,6 +42,7 @@
                     </div> --}}
                 </div>
             </div>
+
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="team-item rounded">
                     <img class="img-fluid" src="{{ asset('img/events/event-3.jpg') }}" alt="">
@@ -58,10 +60,13 @@
                     </div> --}}
                 </div>
             </div>
-
+        </div>
+        <!--/.row -->
+        <br>
+        <div class="row g-4">
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="team-item rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/event-4.jpg') }}" alt="">
+                    <img class="img-fluid" src="{{ asset('img/events/event-7.jpeg') }}" alt="">
                     {{-- <div class="team-text">
                         <h4 class="mb-0">Diana Wagner</h4>
                         <p class="text-primary">Senior Gardener</p>
@@ -79,7 +84,7 @@
 
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="team-item rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/event-5.jpg') }}" alt="">
+                    <img class="img-fluid" src="{{ asset('img/events/event-8.jpeg') }}" alt="">
                     {{-- <div class="team-text">
                         <h4 class="mb-0">Diana Wagner</h4>
                         <p class="text-primary">Senior Gardener</p>
@@ -97,7 +102,7 @@
 
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="team-item rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/event-6.jpg') }}" alt="">
+                    <img class="img-fluid" src="{{ asset('img/events/event-9.jpeg') }}" alt="">
                     {{-- <div class="team-text">
                         <h4 class="mb-0">Diana Wagner</h4>
                         <p class="text-primary">Senior Gardener</p>
@@ -113,5 +118,122 @@
                 </div>
             </div>
         </div>
+        <!--/.row -->
+        <br>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="team-item rounded">
+                    <img class="img-fluid" src="{{ asset('img/events/event-10.jpeg') }}" alt="">
+                    {{-- <div class="team-text">
+                        <h4 class="mb-0">Diana Wagner</h4>
+                        <p class="text-primary">Senior Gardener</p>
+                        <div class="team-social d-flex">
+                            <a class="btn btn-square rounded-circle me-2" href=""><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square rounded-circle me-2" href=""><i
+                                    class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square rounded-circle me-2" href=""><i
+                                    class="fab fa-instagram"></i></a>
+                        </div>
+                    </div> --}}
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="team-item rounded">
+                    <img class="img-fluid" src="{{ asset('img/events/event-11.jpeg') }}" alt="">
+                    {{-- <div class="team-text">
+                        <h4 class="mb-0">Diana Wagner</h4>
+                        <p class="text-primary">Senior Gardener</p>
+                        <div class="team-social d-flex">
+                            <a class="btn btn-square rounded-circle me-2" href=""><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square rounded-circle me-2" href=""><i
+                                    class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square rounded-circle me-2" href=""><i
+                                    class="fab fa-instagram"></i></a>
+                        </div>
+                    </div> --}}
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="team-item rounded">
+                    <img class="img-fluid" src="{{ asset('img/events/event-12.jpeg') }}" alt="">
+                    {{-- <div class="team-text">
+                        <h4 class="mb-0">Diana Wagner</h4>
+                        <p class="text-primary">Senior Gardener</p>
+                        <div class="team-social d-flex">
+                            <a class="btn btn-square rounded-circle me-2" href=""><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square rounded-circle me-2" href=""><i
+                                    class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square rounded-circle me-2" href=""><i
+                                    class="fab fa-instagram"></i></a>
+                        </div>
+                    </div> --}}
+                </div>
+            </div>
+        </div>
+        <!--/.row -->
+
+        <br>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="team-item rounded">
+                    <img class="img-fluid" src="{{ asset('img/events/event-13.jpeg') }}" alt="">
+                    {{-- <div class="team-text">
+                        <h4 class="mb-0">Diana Wagner</h4>
+                        <p class="text-primary">Senior Gardener</p>
+                        <div class="team-social d-flex">
+                            <a class="btn btn-square rounded-circle me-2" href=""><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square rounded-circle me-2" href=""><i
+                                    class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square rounded-circle me-2" href=""><i
+                                    class="fab fa-instagram"></i></a>
+                        </div>
+                    </div> --}}
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="team-item rounded">
+                    <img class="img-fluid" src="{{ asset('img/events/event-14.jpeg') }}" alt="">
+                    {{-- <div class="team-text">
+                        <h4 class="mb-0">Diana Wagner</h4>
+                        <p class="text-primary">Senior Gardener</p>
+                        <div class="team-social d-flex">
+                            <a class="btn btn-square rounded-circle me-2" href=""><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square rounded-circle me-2" href=""><i
+                                    class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square rounded-circle me-2" href=""><i
+                                    class="fab fa-instagram"></i></a>
+                        </div>
+                    </div> --}}
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="team-item rounded">
+                    <img class="img-fluid" src="{{ asset('img/events/event-15.jpeg') }}" alt="">
+                    {{-- <div class="team-text">
+                        <h4 class="mb-0">Diana Wagner</h4>
+                        <p class="text-primary">Senior Gardener</p>
+                        <div class="team-social d-flex">
+                            <a class="btn btn-square rounded-circle me-2" href=""><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square rounded-circle me-2" href=""><i
+                                    class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square rounded-circle me-2" href=""><i
+                                    class="fab fa-instagram"></i></a>
+                        </div>
+                    </div> --}}
+                </div>
+            </div>
+        </div>
+        <!--/.row -->
+
     </div>
 </div>
