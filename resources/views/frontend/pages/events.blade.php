@@ -8,4 +8,5 @@
     <!--Events Start-->
     @include('frontend.include.events')
     <!--Events End-->
+
 @endsection

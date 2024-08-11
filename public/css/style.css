@@ -562,7 +562,6 @@ h6,
   background: var(--light);
   padding: 10px 15px;
 }
-
 #portfolio-flters li {
   display: inline-block;
   font-weight: 500;
@@ -571,9 +570,8 @@ h6,
   transition: 0.5s;
   border-bottom: 2px solid transparent;
 }
-
 #portfolio-flters li:hover,
-#portfolio-flters li.active {
+#portfolio-flters li #portfolio-flters li.active {
   color: var(--dark);
   border-color: var(--dark);
 }
