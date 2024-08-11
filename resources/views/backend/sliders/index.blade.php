@@ -13,8 +13,8 @@
                         <div class="card-header">
                             <h3 class="card-title">Blog Posts</h3>
                             <div class="card-tools">
-                                <a href="{{ route('posts.create') }}" class="btn btn-success btn-sm">
-                                    <i class="fas fa-plus"></i> New Post
+                                <a href="{{ route('sliders.create') }}" class="btn btn-success btn-sm">
+                                    <i class="fas fa-plus"></i> Add Slider
                                 </a>
                             </div>
                         </div>
@@ -24,32 +24,28 @@
                                     <tr>
                                         <th style="width: 10px">SN</th>
                                         <th>Title</th>
-                                        <th>Author</th>
-                                        <th>Created At</th>
+                                        <th>Slug</th>
+                                        <th>Image</th>
+                                        <th>Created By</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data as $post)
+                                    @foreach ($data as $slider)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $post->title }}</td>
-                                            <td>{{ $post->user->first_name }} {{ $post->user->last_name }}</td>
-                                            <td>
-                                                @isset($post->posted_at)
-                                                    {{ date('d M Y', strtotime($post->posted_at)) }}
-                                                @else
-                                                    {{ $post->created_at->format('d M Y') }}
-                                                @endisset
-                                            </td>
+                                            <td>{{ $slider->title }}</td>
+                                            <td>{{ $slider->slug }}</td>
+                                            <td></td>
+                                            <td>{{ $slider->createdBy->first_name }} {{ $slider->createdBy->last_name }}</td>
                                             <td class="col-sm-2">
-                                                @if (!$post->deleted_at)
-                                                    <a href="{{ route('posts.edit', $post->id) }}"
+                                                @if (!$slider->deleted_at)
+                                                    <a href="{{ route('sliders.edit', $slider->id) }}"
                                                         class="btn btn-warning btn-sm">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-                                                    <button type="button" class="btn btn-danger btn-sm deletePostBtn"
-                                                        data-id="{{ $post->id }}">
+                                                    <button type="button" class="btn btn-danger btn-sm deleteSliderBtn"
+                                                        data-id="{{ $slider->id }}">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                 @endif
@@ -73,16 +69,17 @@
 
 @push('scripts')
     <script>
-        $(document).ready(function() {
-            $(document).on('click', '.deletePostBtn', function(e) {
+        $(document).ready(function () {
+            
+            $(document).on('click', '.deleteSliderBtn', function(e){
                 e.preventDefault();
-                let post_id = $(this).data('id');
-                let path = '{{ route('posts.delete', ':post') }}';
-                path = path.replace(":post", post_id);
+                let slider_id = $(this).data('id');
+                let path = '{{ route('sliders.delete', ':slider') }}';
+                path = path.replace(":slider", slider_id);
                 let token = '{{ csrf_token() }}';
                 Swal.fire({
                     title: 'Are you sure?',
-                    text: 'You want to remove this post',
+                    text: 'You want to remove this slider',
                     showDenyButton: false,
                     showCancelButton: true,
                     confirmButtonText: 'Delete',
@@ -110,6 +107,7 @@
                     }
                 });
             });
+
         });
     </script>
 @endpush

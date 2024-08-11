@@ -107,7 +107,7 @@ class PostController extends Controller
         if ($request->hasFile('featured_image')) {
             $featureImage = $request->file('featured_image');
         } else {
-            $featureImage = null;
+            $featureImage = $post->featured_image;
         }
 
         $posts = $this->postsRepository->updatePost($request->all(), $post, $featureImage);

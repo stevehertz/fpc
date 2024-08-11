@@ -43,7 +43,7 @@
                     <a href="{{ route('dashboard') }}" class="nav-link @if (Route::is('dashboard')) active @endif">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            @lang('backend.dashboard')
+                            @lang('sidebar.dashboard')
                         </p>
                     </a>
                 </li>
@@ -51,7 +51,7 @@
                     <a href="{{ route('posts.index') }}" class="nav-link @if (Route::is('posts.index')) active @endif">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            @lang('backend.blogs')
+                            @lang('sidebar.blogs')
                         </p>
                     </a>
                 </li>
@@ -60,19 +60,30 @@
                     <a href="{{ route('posts.index') }}" class="nav-link @if (Route::is('posts.index')) active @endif">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
-                            @lang('backend.teams')
+                            @lang('sidebar.teams')
                         </p>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a href="{{ route('posts.index') }}" class="nav-link @if (Route::is('posts.index')) active @endif">
-                        <i class="nav-icon fas fa-users"></i>
+                        <i class="nav-icon fas fa-file-alt"></i>
                         <p>
-                            @lang('backend.services')
+                            @lang('sidebar.services')
                         </p>
                     </a>
                 </li>
+
+
+                <li class="nav-item">
+                    <a href="{{ route('sliders.index') }}" class="nav-link @if (Route::is('sliders.index')) active @endif">
+                        <i class="nav-icon fas fa-folder"></i>
+                        <p>
+                            @lang('sidebar.slider')
+                        </p>
+                    </a>
+                </li>
+                
                 
                 <li class="nav-item">
                     <a href="#" class="nav-link">

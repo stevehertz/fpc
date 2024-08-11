@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PagesController::class, 'index'])->name('home');
 
+Route::get('/{slug}/view/details', [PagesController::class, 'viewSlider'])->name('view.details');
+
 Route::get('/about', [PagesController::class, 'about'])->name('about.us');
 
 Route::get('/who-we-are', [PagesController::class, 'who_we_are'])->name('who.we.are');

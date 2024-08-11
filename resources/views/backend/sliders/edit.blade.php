@@ -11,7 +11,7 @@
                 <div class="col-md-8">
                     <div class="card card-primary">
                         <!-- form start -->
-                        <form @isset($data) id="updatePostForm" @else id="newPostForm" @endisset>
+                        <form @isset($data) id="updateSliderForm" @else id="newSliderForm" @endisset>
                             @csrf
                             @isset($data)
                                 <input type="hidden" name="_method" value="PUT">
@@ -21,10 +21,10 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="newPostTitle">
+                                            <label for="title">
                                                 Title
                                             </label>
-                                            <input type="text" name="title" class="form-control" id="newPostTitle"
+                                            <input type="text" name="title" class="form-control" id="title"
                                                 placeholder="Title"
                                                 value="@isset($data) {{ $data->title }} @endisset">
                                         </div>
@@ -35,15 +35,15 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="newPostFeaturedImage">
-                                                Featured Image
+                                            <label for="image">
+                                                Image
                                             </label>
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" name="featured_image" class="custom-file-input"
-                                                        id="newPostFeaturedImage"
-                                                        value="@isset($data) {{ $data->featured_image }} @endisset">
-                                                    <label class="custom-file-label" for="newPostFeaturedImage">
+                                                    <input type="file" name="image" class="custom-file-input"
+                                                        id="image"
+                                                        value="@isset($data) {{ $data->image }} @endisset">
+                                                    <label class="custom-file-label" for="image">
                                                         Choose file
                                                     </label>
                                                 </div>
@@ -57,35 +57,17 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="newPostContent">
-                                                Content
+                                            <label for="description">
+                                                Description
                                             </label>
-                                            <textarea id="newPostContent" name="content">
-                                                @isset($data){!! $data->content !!}@endisset
+                                            <textarea id="description" class="contentDescription" name="description">
+                                                @isset($data)
+{!! $data->description !!}
+@endisset
                                             </textarea>
                                         </div>
                                     </div>
                                     <!--/.col -->
-                                </div>
-                                <!--/.row -->
-
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label>Date Posted:</label>
-                                            <div class="input-group date" id="reservationdatetime"
-                                                data-target-input="nearest">
-                                                <input type="text" name="posted_at" placeholder="Date Posted"
-                                                    class="form-control datetimepicker-input"
-                                                    data-target="#reservationdatetime" />
-                                                <div class="input-group-append" data-target="#reservationdatetime"
-                                                    data-toggle="datetimepicker">
-                                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /.form group -->
-                                    </div>
                                 </div>
                                 <!--/.row -->
                             </div>
@@ -109,15 +91,15 @@
                     <div class="card card-widget">
                         <div class="card-header">
                             <h3 class="card-title">
-                                Featured Image
+                                Slide Image
                             </h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             @isset($data)
-                                @if ($data->featured_image)
+                                @if ($data->image)
                                     {{-- {{ $data->featured_image  }} --}}
-                                    <img class="img-fluid pad" src="{{ asset('img/' . $data->featured_image) }}" alt="Photo">
+                                    <img class="img-fluid pad" src="{{ asset('img/' . $data->image) }}" alt="Photo">
                                 @else
                                     <img class="img-fluid pad" src="{{ asset('img/backend/default-150x150.png') }}"
                                         alt="Photo">
@@ -141,26 +123,9 @@
     <script>
         $(document).ready(function() {
 
-            //Date and time picker
-            $('#reservationdatetime').datetimepicker({
-                format: 'YYYY-MM-DD hh:mm:ss',
-                icons: {
-                    time: 'far fa-clock'
-                }
-            });
-
-            // Summernote
-            $('#newPostContent').summernote({
-                height: 300,
-                callbacks: {
-                    onImageUpload: function(files) {
-                        uploadImage(files[0]);
-                    }
-                }
-            });
 
             function uploadImage(file) {
-                let path = '{{ route('posts.upload') }}';
+                let path = '{{ route('sliders.upload') }}';
                 let data = new FormData();
                 data.append("image", file);
                 $.ajax({
@@ -178,12 +143,12 @@
                 });
             }
 
-            $('#newPostForm').submit(function(e) {
+            $('#newSliderForm').submit(function(e) {
                 e.preventDefault();
                 let form = $(this);
                 let formData = new FormData(form[0]);
-                formData.append('content', $('#newPostContent').val());
-                let path = '{{ route('posts.store') }}';
+                formData.append('description', $('#image').val());
+                let path = '{{ route('sliders.store') }}';
                 $.ajax({
                     type: "POST",
                     url: path,
@@ -207,7 +172,7 @@
                         if (data['status']) {
                             toastr.success(data['message']);
                             setTimeout(() => {
-                                window.location.href = '{{ route('posts.index') }}'
+                                window.location.href = '{{ route('sliders.index') }}'
                             }, 1000);
                         }
                     },
@@ -224,12 +189,12 @@
             });
 
             @isset($data)
-                $('#updatePostForm').submit(function(e) {
+                $('#updateSliderForm').submit(function(e) {
                     e.preventDefault();
                     let form = $(this);
                     let formData = new FormData(form[0]);
-                    formData.append('content', $('#newPostContent').val());
-                    let path = '{{ route('posts.update', $data->id) }}';
+                    formData.append('description', $('#image').val());
+                    let path = '{{ route('sliders.update', $data->id) }}';
                     $.ajax({
                         type: "POST",
                         url: path,
@@ -253,7 +218,7 @@
                             if (data['status']) {
                                 toastr.success(data['message']);
                                 setTimeout(() => {
-                                    window.location.href = '{{ route('posts.index') }}'
+                                    window.location.href = '{{ route('sliders.index') }}'
                                 }, 1000);
                             }
                         },
@@ -269,6 +234,7 @@
                     });
                 });
             @endisset
+
         });
     </script>
 @endpush

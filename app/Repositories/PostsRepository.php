@@ -52,7 +52,7 @@ class PostsRepository
 
         $post->update([
             'title' => data_get($attributes, 'title'),
-            'featured_image' => 'img/posts/noimage.png',
+            'featured_image' => $post->featured_image,
             'content' => data_get($attributes, 'content'),
             'slug' =>  Str::slug(data_get($attributes, 'title')),
             'posted_at' => data_get($attributes, 'posted_at')

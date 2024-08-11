@@ -5,21 +5,36 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Repositories\PostsRepository;
+use App\Repositories\SliderRepository;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
     //
-    private $postsRepository;
+    private $postsRepository, $sliderRepository;
 
-    public function __construct(PostsRepository $postsRepository)
+    public function __construct(PostsRepository $postsRepository, SliderRepository $sliderRepository)
     {
         $this->postsRepository = $postsRepository;   
+        $this->sliderRepository = $sliderRepository;
     }
 
     public function index() 
     {
-        return view('frontend.index');    
+        $sliders = $this->sliderRepository->getSliderFront();
+        return view('frontend.index', [
+            'sliders' => $sliders
+        ]);    
+    }
+
+    public function viewSlider($slug)  
+    {
+        $data = $this->sliderRepository->showSliderBySlug($slug);
+        $relatedPosts = Post::limit(7)->get();
+        return view('frontend.pages.viewSlider', [
+            'data' => $data,
+            'relatedPosts' => $relatedPosts
+        ]);
     }
 
     public function about()  
