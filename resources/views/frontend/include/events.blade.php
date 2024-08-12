@@ -79,9 +79,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row g-4 portfolio-container mb-5">
 
             <div class="col-lg-4 col-md-6 portfolio-item bv wow fadeInUp" data-wow-delay="0.1s">
                 <div class="portfolio-inner rounded">
@@ -136,69 +133,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-
-
-        <div class="row g-4 portfolio-container mb-5">
-
-            <div class="col-lg-4 col-md-6 portfolio-item bv wow fadeInUp" data-wow-delay="0.1s">
-                <div class="portfolio-inner rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/bv/image-4.JPG') }}" alt="">
-                    <div class="portfolio-text">
-                        <h4 class="text-white mb-4">
-                            &nbsp;
-                        </h4>
-                        <div class="d-flex">
-                            <a class="btn btn-lg-square rounded-circle mx-2"
-                                href="{{ asset('img/events/bv/image-4.JPG') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            {{-- <a class="btn btn-lg-square rounded-circle mx-2" href=""><i
-                                        class="fa fa-link"></i></a> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item bv wow fadeInUp" data-wow-delay="0.3s">
-                <div class="portfolio-inner rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/bv/image-5.jpg') }}" alt="">
-                    <div class="portfolio-text">
-                        <h4 class="text-white mb-4">
-                            &nbsp;
-                        </h4>
-                        <div class="d-flex">
-                            <a class="btn btn-lg-square rounded-circle mx-2"
-                                href="{{ asset('img/events/bv/image-5.jpg') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            {{-- <a class="btn btn-lg-square rounded-circle mx-2" href=""><i
-                                        class="fa fa-link"></i></a> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item bv wow fadeInUp" data-wow-delay="0.5s">
-                <div class="portfolio-inner rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/bv/image-6.jpg') }}" alt="">
-                    <div class="portfolio-text">
-                        <h4 class="text-white mb-4">
-                            &nbsp;
-                        </h4>
-                        <div class="d-flex">
-                            <a class="btn btn-lg-square rounded-circle mx-2"
-                                href="{{ asset('img/events/bv/image-6.jpg') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            {{-- <a class="btn btn-lg-square rounded-circle mx-2" href=""><i
-                                        class="fa fa-link"></i></a> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row g-4 portfolio-container mb-5">
 
             <div class="col-lg-4 col-md-6 portfolio-item absa wow fadeInUp" data-wow-delay="0.1s">
                 <div class="portfolio-inner rounded">
@@ -253,63 +187,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row g-4 portfolio-container mb-5">
-            <div class="col-lg-4 col-md-6 portfolio-item absa wow fadeInUp" data-wow-delay="0.1s">
-                <div class="portfolio-inner rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/absa/image-7.JPG') }}" alt="">
-                    <div class="portfolio-text">
-                        <h4 class="text-white mb-4">
-                            &nbsp;
-                        </h4>
-                        <div class="d-flex">
-                            <a class="btn btn-lg-square rounded-circle mx-2"
-                                href="{{ asset('img/events/absa/image-7.JPG') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            {{-- <a class="btn btn-lg-square rounded-circle mx-2" href=""><i
-                                        class="fa fa-link"></i></a> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item absa wow fadeInUp" data-wow-delay="0.3s">
-                <div class="portfolio-inner rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/absa/image-8.jpg') }}" alt="">
-                    <div class="portfolio-text">
-                        <h4 class="text-white mb-4">
-                            &nbsp;
-                        </h4>
-                        <div class="d-flex">
-                            <a class="btn btn-lg-square rounded-circle mx-2"
-                                href="{{ asset('img/events/absa/image-8.jpg') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            {{-- <a class="btn btn-lg-square rounded-circle mx-2" href=""><i
-                                        class="fa fa-link"></i></a> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item absa wow fadeInUp" data-wow-delay="0.5s">
-                <div class="portfolio-inner rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/absa/image-9.jpg') }}" alt="">
-                    <div class="portfolio-text">
-                        <h4 class="text-white mb-4">
-                            &nbsp;
-                        </h4>
-                        <div class="d-flex">
-                            <a class="btn btn-lg-square rounded-circle mx-2"
-                                href="{{ asset('img/events/absa/image-9.jpg') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            {{-- <a class="btn btn-lg-square rounded-circle mx-2" href=""><i
-                                        class="fa fa-link"></i></a> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </div>
