@@ -1,5 +1,7 @@
 @extends('frontend.layout.app')
 
+@section('title', 'Contact Us | ' . config('app.name'))
+
 @section('content')
     <!-- Page Header Start -->
     @include('frontend.include.breadcrumb')

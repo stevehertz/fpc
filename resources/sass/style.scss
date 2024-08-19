@@ -1,3 +1,14 @@
+/**
+* Project Name: FPC Kenya - v1.0.0
+* Project URL: https://fpckenya.co.ke/
+* Author: Stephen Kamau
+* License: MIT
+*/
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/    
+
 /********** Template CSS **********/
 :root {
     --primary  : #348E38;
@@ -100,14 +111,18 @@ h6,
     height: 80px
 }
 
-.navbar .navbar-nav .nav-link {
-    margin-right: 35px;
-    padding     : 25px 0;
-    color       : var(--dark);
-    font-size   : 18px;
-    font-weight : 500;
-    outline     : none;
-}
+.navbar{
+    .navbar-nav{
+        .nav-link {
+            margin-right: 35px;
+            padding     : 25px 0;
+            color       : var(--dark);
+            font-size   : 18px;
+            font-weight : 500;
+            outline     : none;
+        }
+    } 
+} 
 
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link.active {
@@ -154,6 +169,15 @@ h6,
 }
 
 /*** Header ***/
+
+#header-carousel
+{
+    .carousel-item
+    {
+        height: 550px !important;
+    }
+}
+
 .carousel-caption {
     top            : 0;
     left           : 0;
@@ -165,6 +189,9 @@ h6,
     text-align     : center;
     background     : rgba(15, 66, 41, .6);
     z-index        : 1;
+    h1{
+        font-size: 50px;
+    }
 }
 
 .carousel-control-prev,
@@ -182,16 +209,18 @@ h6,
 }
 
 @media (max-width: 768px) {
-    #header-carousel .carousel-item {
-        position  : relative;
-        min-height: 450px;
-    }
+    #header-carousel{
+        .carousel-item {
+            position  : relative;
+            min-height: 450px;
+            img {
+                position  : absolute;
+                width     : 100%;
+                height    : 100%;
+                object-fit: cover;
+            }
 
-    #header-carousel .carousel-item img {
-        position  : absolute;
-        width     : 100%;
-        height    : 100%;
-        object-fit: cover;
+        }
     }
 }
 
@@ -222,6 +251,32 @@ h6,
 
 
 /*** Facts & Quote ***/
+.facts{
+    position: relative;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-image: url('/img/carousel/carousel-1.jpg') !important;
+    background-repeat: no-repeat;
+    color: #fff;
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(15, 66, 41, .6);
+        z-index: 1;
+        color: #fff;
+    }
+
+    .container{
+        position: relative;
+        z-index: 2;
+    }
+}
+
 .facts,
 .quote {
     background: rgba(15, 66, 41, .6);
@@ -248,18 +303,18 @@ h6,
 .team-item {
     position: relative;
     overflow: hidden;
-}
-
-.team-item .team-text {
-    position     : absolute;
-    width        : calc(100% - 45px);
-    left         : -100%;
-    bottom       : 45px;
-    padding      : 1.5rem;
-    background   : #FFFFFF;
-    border-radius: 0 4px 4px 0;
-    opacity      : 0;
-    transition   : .5s;
+    .team-text {
+        position     : absolute;
+        width        : calc(100% - 45px);
+        left         : -100%;
+        bottom       : 45px;
+        padding      : 1.5rem;
+        background   : #FFFFFF;
+        border-radius: 0 4px 4px 0;
+        opacity      : 0;
+        transition   : .5s;
+    }
+    
 }
 
 .team-item:hover .team-text {

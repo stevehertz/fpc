@@ -1,3 +1,12 @@
+/**
+* Project Name: FPC Kenya - v1.0.0
+* Project URL: https://fpckenya.co.ke/
+* Author: Stephen Kamau
+* License: MIT
+*/
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
 /********** Template CSS **********/
 :root {
   --primary: #348E38;
@@ -149,6 +158,10 @@ h6,
   }
 }
 /*** Header ***/
+#header-carousel .carousel-item {
+  height: 550px !important;
+}
+
 .carousel-caption {
   top: 0;
   left: 0;
@@ -160,6 +173,9 @@ h6,
   text-align: center;
   background: rgba(15, 66, 41, 0.6);
   z-index: 1;
+}
+.carousel-caption h1 {
+  font-size: 50px;
 }
 
 .carousel-control-prev,
@@ -213,6 +229,31 @@ h6,
   }
 }
 /*** Facts & Quote ***/
+.facts {
+  position: relative;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-image: url("/img/carousel/carousel-1.jpg") !important;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+.facts::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 66, 41, 0.6);
+  z-index: 1;
+  color: #fff;
+}
+.facts .container {
+  position: relative;
+  z-index: 2;
+}
+
 .facts,
 .quote {
   background: rgba(15, 66, 41, 0.6);
@@ -576,13 +617,16 @@ h6,
   border-color: var(--dark);
 }
 
-.portfolio-inner {
+.portfolio-container {
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+.portfolio-container .portfolio-inner {
   position: relative;
   overflow: hidden;
 }
-
-.portfolio-inner::before,
-.portfolio-inner::after {
+.portfolio-container .portfolio-inner::before,
+.portfolio-container .portfolio-inner::after {
   position: absolute;
   content: "";
   width: 0;
@@ -592,18 +636,15 @@ h6,
   background: rgba(15, 66, 41, 0.6);
   transition: 0.5s;
 }
-
-.portfolio-inner::after {
+.portfolio-container .portfolio-inner::after {
   left: auto;
   right: 0;
 }
-
-.portfolio-inner:hover::before,
-.portfolio-inner:hover::after {
+.portfolio-container .portfolio-inner:hover::before,
+.portfolio-container .portfolio-inner:hover::after {
   width: 50%;
 }
-
-.portfolio-inner .portfolio-text {
+.portfolio-container .portfolio-inner .portfolio-text {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -617,18 +658,15 @@ h6,
   z-index: 3;
   opacity: 0;
 }
-
-.portfolio-inner:hover .portfolio-text {
+.portfolio-container .portfolio-inner:hover .portfolio-text {
   transition-delay: 0.3s;
   opacity: 1;
 }
-
-.portfolio-inner .portfolio-text .btn {
+.portfolio-container .portfolio-inner .portfolio-text .btn {
   background: var(--light);
   color: var(--primary);
 }
-
-.portfolio-inner .portfolio-text .btn:hover {
+.portfolio-container .portfolio-inner .portfolio-text .btn:hover {
   background: var(--primary);
   color: var(--light);
 }
@@ -644,7 +682,6 @@ h6,
   position: relative;
   overflow: hidden;
 }
-
 .team-item .team-text {
   position: absolute;
   width: calc(100% - 45px);

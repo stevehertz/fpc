@@ -1,5 +1,7 @@
 @extends('frontend.layout.app')
 
+@section('title', 'Home | ' . config('app.name'))
+
 @section('content')
     <!-- Carousel Start -->
     @include('frontend.include.slider')
@@ -10,7 +12,7 @@
     <!-- Top Feature End -->
 
     <!-- About Start -->
-    @include('frontend.include.about')
+    @include('frontend.include.upcoming')
     <!-- About End -->
 
     <!-- Facts Start -->
@@ -18,7 +20,7 @@
     <!-- Facts End -->
 
     <!-- Features Start -->
-    @include('frontend.include.why-us')
+    {{-- @include('frontend.include.why-us') --}}
     <!-- Features End -->
 
     <!-- Service Start -->

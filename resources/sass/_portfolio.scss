@@ -19,59 +19,64 @@
     }
 }
 
-.portfolio-inner {
-    position: relative;
-    overflow: hidden;
-}
+.portfolio-container {
+    margin-bottom: 1.5rem;
+    overflow     : hidden;
 
-.portfolio-inner::before,
-.portfolio-inner::after {
-    position  : absolute;
-    content   : "";
-    width     : 0;
-    height    : 100%;
-    top       : 0;
-    left      : 0;
-    background: rgba(15, 66, 41, .6);
-    transition: .5s;
-}
+    .portfolio-inner {
+        position: relative;
+        overflow: hidden;
+    }
 
-.portfolio-inner::after {
-    left : auto;
-    right: 0;
-}
+    .portfolio-inner::before,
+    .portfolio-inner::after {
+        position  : absolute;
+        content   : "";
+        width     : 0;
+        height    : 100%;
+        top       : 0;
+        left      : 0;
+        background: rgba(15, 66, 41, .6);
+        transition: .5s;
+    }
 
-.portfolio-inner:hover::before,
-.portfolio-inner:hover::after {
-    width: 50%;
-}
+    .portfolio-inner::after {
+        left : auto;
+        right: 0;
+    }
 
-.portfolio-inner .portfolio-text {
-    position       : absolute;
-    width          : 100%;
-    height         : 100%;
-    top            : 0;
-    left           : 0;
-    display        : flex;
-    flex-direction : column;
-    align-items    : center;
-    justify-content: center;
-    transition     : .5s;
-    z-index        : 3;
-    opacity        : 0;
-}
+    .portfolio-inner:hover::before,
+    .portfolio-inner:hover::after {
+        width: 50%;
+    }
 
-.portfolio-inner:hover .portfolio-text {
-    transition-delay: .3s;
-    opacity         : 1;
-}
+    .portfolio-inner .portfolio-text {
+        position       : absolute;
+        width          : 100%;
+        height         : 100%;
+        top            : 0;
+        left           : 0;
+        display        : flex;
+        flex-direction : column;
+        align-items    : center;
+        justify-content: center;
+        transition     : .5s;
+        z-index        : 3;
+        opacity        : 0;
+    }
 
-.portfolio-inner .portfolio-text .btn {
-    background: var(--light);
-    color     : var(--primary);
-}
+    .portfolio-inner:hover .portfolio-text {
+        transition-delay: .3s;
+        opacity         : 1;
+    }
 
-.portfolio-inner .portfolio-text .btn:hover {
-    background: var(--primary);
-    color     : var(--light);
+    .portfolio-inner .portfolio-text .btn {
+        background: var(--light);
+        color     : var(--primary);
+    }
+
+    .portfolio-inner .portfolio-text .btn:hover {
+        background: var(--primary);
+        color     : var(--light);
+    }
 }

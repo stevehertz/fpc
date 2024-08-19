@@ -100,14 +100,14 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item bv wow fadeInUp" data-wow-delay="0.3s">
                 <div class="portfolio-inner rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/bv/image-2.jpg') }}" alt="">
+                    <img class="img-fluid" src="{{ asset('img/events/bv/image-2.JPG') }}" alt="">
                     <div class="portfolio-text">
                         <h4 class="text-white mb-4">
                             &nbsp;
                         </h4>
                         <div class="d-flex">
                             <a class="btn btn-lg-square rounded-circle mx-2"
-                                href="{{ asset('img/events/bv/image-2.jpg') }}" data-lightbox="portfolio"><i
+                                href="{{ asset('img/events/bv/image-2.JPG') }}" data-lightbox="portfolio"><i
                                     class="fa fa-eye"></i></a>
                             {{-- <a class="btn btn-lg-square rounded-circle mx-2" href=""><i
                                         class="fa fa-link"></i></a> --}}
@@ -118,14 +118,14 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item bv wow fadeInUp" data-wow-delay="0.5s">
                 <div class="portfolio-inner rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/bv/image-3.jpg') }}" alt="">
+                    <img class="img-fluid" src="{{ asset('img/events/bv/image-3.JPG') }}" alt="">
                     <div class="portfolio-text">
                         <h4 class="text-white mb-4">
                             &nbsp;
                         </h4>
                         <div class="d-flex">
                             <a class="btn btn-lg-square rounded-circle mx-2"
-                                href="{{ asset('img/events/bv/image-3.jpg') }}" data-lightbox="portfolio"><i
+                                href="{{ asset('img/events/bv/image-3.JPG') }}" data-lightbox="portfolio"><i
                                     class="fa fa-eye"></i></a>
                             {{-- <a class="btn btn-lg-square rounded-circle mx-2" href=""><i
                                         class="fa fa-link"></i></a> --}}

@@ -1,7 +1,6 @@
 <div class="container-fluid p-0 wow fadeIn" data-wow-delay="0.1s">
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-
             @forelse ($sliders as $slider)
                 <div class="carousel-item @if ($loop->first) active @endif">
                     <img class="w-100" src="{{ asset('img/'.$slider->image) }}" alt="Image">

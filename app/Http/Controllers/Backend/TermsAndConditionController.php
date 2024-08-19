@@ -1,19 +1,30 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
 use App\Models\TermsAndCondition;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTermsAndConditionRequest;
 use App\Http\Requests\UpdateTermsAndConditionRequest;
+use App\Repositories\TermsAndConditionRepository;
 
 class TermsAndConditionController extends Controller
 {
+
+    private $termsAndConditionRepository;
+    public function __construct(TermsAndConditionRepository $termsAndConditionRepository)
+    {
+        $this->middleware('auth'); 
+        $this->termsAndConditionRepository = $termsAndConditionRepository;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         //
+        return view('backend.terms.index');
     }
 
     /**
