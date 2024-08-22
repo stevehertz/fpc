@@ -1,5 +1,8 @@
 <?php
 
+use Carbon\Carbon;
+use App\Enums\EventStatus;
+use App\Enums\EventPriority;
 use App\Enums\ExhibitionRegisterAs;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
@@ -208,6 +211,9 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
         'ExhibitionRegisterAs' => ExhibitionRegisterAs::class,
+        'EventPriority' => EventPriority::class,
+        'EventStatus' => EventStatus::class,
+        'Carbon' => Carbon::class,
     ])->toArray(),
 
 ];

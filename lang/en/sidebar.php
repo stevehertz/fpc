@@ -6,5 +6,6 @@ return [
     'teams' => 'Teams',
     'services' => 'Services',
     'slider' => 'Slider',
+    'events' => 'Events',
     'terms-and-conditions' => 'Terms and Conditions',
 ];

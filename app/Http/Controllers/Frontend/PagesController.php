@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Repositories\EventRepositories;
 use App\Repositories\PostsRepository;
 use App\Repositories\SliderRepository;
 use Illuminate\Http\Request;
@@ -11,19 +12,22 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     //
-    private $postsRepository, $sliderRepository;
+    private $postsRepository, $sliderRepository, $eventRepositories;
 
-    public function __construct(PostsRepository $postsRepository, SliderRepository $sliderRepository)
+    public function __construct(PostsRepository $postsRepository, SliderRepository $sliderRepository, EventRepositories $eventRepositories)
     {
         $this->postsRepository = $postsRepository;   
         $this->sliderRepository = $sliderRepository;
+        $this->eventRepositories = $eventRepositories;
     }
 
     public function index() 
     {
         $sliders = $this->sliderRepository->getSliderFront();
+        $criticalEventData = $this->eventRepositories->showUpcomingCriticalEvent();
         return view('frontend.index', [
-            'sliders' => $sliders
+            'sliders' => $sliders,
+            'criticalEvent' => $criticalEventData
         ]);    
     }
 

@@ -84,6 +84,15 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('backend.events.index') }}" class="nav-link @if (Route::is('backend.events.index')) active @endif">
+                        <i class="nav-icon fas fa-calendar-alt"></i>
+                        <p>
+                            @lang('sidebar.events')
+                        </p>
+                    </a>
+                </li>
+
                 {{-- <li class="nav-item">
                     <a href="{{ route('terms.conditions.index') }}" class="nav-link @if (Route::is('terms.conditions.index')) active @endif">
                         <i class="nav-icon fas fa-database"></i>
