@@ -9,6 +9,15 @@
 <script src="{{ asset('lib/parallax/parallax.min.js') }}"></script>
 <script src="{{ asset('lib/isotope/isotope.pkgd.min.js') }}"></script>
 <script src="{{ asset('lib/lightbox/js/lightbox.min.js') }}"></script>
+<!-- Select2 -->
+<script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
 
 <!-- Template Javascript -->
 <script src="{{ asset('js/main.js') }}"></script>
+
+<script>
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2();
+    });
+</script>

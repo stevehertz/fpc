@@ -43,6 +43,8 @@
     @include('frontend.include.footer')
 
     @include('frontend.components.scripts')
+
+    @stack('scripts')
 </body>
 
 </html>

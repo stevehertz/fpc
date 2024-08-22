@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\ExhibitionRegisterAs;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
@@ -206,6 +207,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'ExhibitionRegisterAs' => ExhibitionRegisterAs::class,
     ])->toArray(),
 
 ];
