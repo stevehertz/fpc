@@ -10,12 +10,15 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                    <p class="fs-5 fw-bold text-primary">Register here</p>
+                    <p class="fs-5 fw-bold text-primary">
+                        {{ $data->name }}
+                    </p>
                     <h1 class="display-5 mb-5">
-                        Register for the conference and exhibition
+                        REGISTER HERE
                     </h1>
                     <form id="registerExhibitionForm" method="POST">
                         @csrf
+                        <input type="hidden" name="event_id" value="{{ $data->id }}"> 
                         <!-- Step 1 -->
                         <div class="row g-3 form-step">
                             <div class="col-12 col-md-6">
@@ -63,7 +66,7 @@
                             <div class="col-12 col-md-12">
                                 <div class="form-group">
                                     {{-- <label>Minimal</label> --}}
-                                    <select name="register_as" class="form-control select2" style="width: 100%;" required>
+                                    <select name="user_type" class="form-control select2" style="width: 100%;" required>
                                         <option selected="selected" disabled="disabled">
                                             Register As
                                         </option>
@@ -108,6 +111,8 @@
                                         </a> --}}
                                     </p>
                                 </div>
+                                <input type="hidden" name="amount" value="50000">
+                                <input type="hidden" name="paid" value="50000">
                             </div>
                             <div class="col-12 col-md-12">
                                 <div class="form-floating">
@@ -121,7 +126,7 @@
                                     Previous
                                 </button>
                                 <button class="btn btn-primary py-3 px-4" type="submit">
-                                    Save
+                                    Register
                                 </button>
                             </div>
                         </div>

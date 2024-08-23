@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row g-5 align-items-center">
             <div class="col-lg-4 col-md-5 wow fadeInUp" data-wow-delay="0.1s">
-                <a href="{{ route('sign.up.for.conference.and.exhibition', $criticalEvent->id) }}">
+                <a href="{{ route('sign.up.for.conference.and.exhibition', $criticalEvent->slug) }}">
                     <img class="img-fluid rounded" data-wow-delay="0.1s" src="{{ asset('img/'.$criticalEvent->image) }}">
                 </a>
             </div>
@@ -28,7 +28,7 @@
                 <p class="mb-4">
                     <b>VENUE:</b> {{ $criticalEvent->venue }}
                 </p>
-                <a class="btn btn-primary py-3 px-4" href="{{ route('sign.up.for.conference.and.exhibition', $criticalEvent->id) }}">
+                <a class="btn btn-primary py-3 px-4" href="{{ route('sign.up.for.conference.and.exhibition', $criticalEvent->slug) }}">
                     Sign up for the conference and exhibition
                 </a>
             </div>

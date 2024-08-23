@@ -15,3 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/{slug}/sign-up', [ExhibitionController::class, 'sign_up'])->name('sign.up.for.conference.and.exhibition');
+
+Route::post('/exhibition/register', [ExhibitionController::class, 'register'])->name('exhibition.register');

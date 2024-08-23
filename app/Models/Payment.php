@@ -7,21 +7,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Event extends Model
+class Payment extends Model
 {
     use HasFactory, SoftDeletes, HasUuid;
 
     protected $fillable = [
-        'name',
-        'slug', 
-        'description',
-        'status', 
-        'venue',
-        'theme',
-        'start_date',
-        'end_date',
-        'priority',
-        'image',
+        'event_id',
+        'attendance_id',
+        'transaction_code',
+        'amount',
+        'paid',
+        'payment_status',
         'created_by',
         'updated_by',
         'deleted_by'
@@ -31,14 +27,13 @@ class Event extends Model
         'deleted_at'
     ];
 
+    public function event()  
+    {
+        return $this->belongsTo(Event::class, 'event_id');    
+    }
+
     public function attendance()  
     {
-        return $this->hasMany(Attendance::class);    
+        return $this->belongsTo(Attendance::class, 'attendance_id');    
     }
-
-    public function payment()  
-    {
-        return $this->hasMany(Payment::class, 'event_id');    
-    }
-
 }

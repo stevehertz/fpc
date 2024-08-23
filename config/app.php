@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\EventPaymentStatus;
 use Carbon\Carbon;
 use App\Enums\EventStatus;
 use App\Enums\EventPriority;
@@ -214,6 +215,7 @@ return [
         'EventPriority' => EventPriority::class,
         'EventStatus' => EventStatus::class,
         'Carbon' => Carbon::class,
+        'EventPaymentStatus' => EventPaymentStatus::class
     ])->toArray(),
 
 ];

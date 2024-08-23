@@ -11,6 +11,10 @@
 <script src="{{ asset('lib/lightbox/js/lightbox.min.js') }}"></script>
 <!-- Select2 -->
 <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+<!-- SweetAlert2 -->
+<script src="{{ asset('plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<!-- Toastr -->
+<script src="{{ asset('plugins/toastr/toastr.min.js') }}"></script>
 
 <!-- Template Javascript -->
 <script src="{{ asset('js/main.js') }}"></script>
