@@ -7,6 +7,8 @@
     @include('frontend.include.breadcrumb')
     <!-- Page Header End -->
 
+    @include('frontend.include.upcoming')
+
     <!--Events Start-->
     @include('frontend.include.events')
     <!--Events End-->

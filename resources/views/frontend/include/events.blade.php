@@ -1,192 +1,72 @@
 <div class="container-xxl py-5 mb-5">
     <div class="container">
         <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            {{-- <p class="fs-5 fw-bold text-primary">Our Projects</p> --}}
-            <h2 class="display-5 mb-5">Our noteworthy events</h2>
+            <p class="fs-5 fw-bold text-primary">
+                These are the other noteworth events
+            </p>
+            <h2 class="display-5 mb-5">
+                Our events
+            </h2>
         </div>
 
-        <div class="row wow fadeInUp" data-wow-delay="0.3s">
-            <div class="col-12 text-center">
-                <ul class="list-inline rounded mb-5" id="portfolio-flters">
-                    <li class="mx-2 active" data-filter="*">
-                        @lang('events.all')
-                    </li>
-                    <li class="mx-2" data-filter=".kisumu">
-                        @lang('events.kisumu')
-                    </li>
-                    <li class="mx-2" data-filter=".bv">
-                        @lang('events.bv')
-                    </li>
-                    <li class="mx-2" data-filter=".absa">
-                        @lang('events.absa')
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="row g-4 portfolio-container mb-5">
-            <div class="col-lg-4 col-md-6 portfolio-item kisumu wow fadeInUp" data-wow-delay="0.1s">
-                <div class="portfolio-inner rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/kisumu/image-1.jpeg') }}" alt="">
-                    <div class="portfolio-text">
-                        <h4 class="text-white mb-4">
-                            &nbsp;
-                        </h4>
-                        <div class="d-flex">
-                            <a class="btn btn-lg-square rounded-circle mx-2"
-                                href="{{ asset('img/events/kisumu/image-1.jpeg') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            {{-- <a class="btn btn-lg-square rounded-circle mx-2" href="">
-                                    <i class="fa fa-link"></i>
-                                </a> --}}
-                        </div>
+        <div class="event-carousel owl-carousel">
+            <div class="event-item">
+                <img src="{{ asset('img/events/event-1.jpg') }}" class="img-fluid w-100" alt="Image">
+                <div class="event-content p-4">
+                    <div class="d-flex justify-content-between mb-4">
+                        <span class="text-body"><i class="fas fa-map-marker-alt me-2"></i>Grand Mahal, Dubai
+                            2100.</span>
+                        <span class="text-body"><i class="fas fa-calendar-alt me-2"></i>10 Feb, 2023</span>
                     </div>
+                    <h4 class="mb-4">How To Build A Cleaning Plan</h4>
+                    <p class="mb-4">Lorem ipsum dolor sit amet consectur adip sed eiusmod amet consectur adip sed
+                        eiusmod tempor.</p>
+                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
                 </div>
             </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item kisumu wow fadeInUp" data-wow-delay="0.3s">
-                <div class="portfolio-inner rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/kisumu/image-2.jpeg') }}" alt="">
-                    <div class="portfolio-text">
-                        <h4 class="text-white mb-4">
-                            &nbsp;
-                        </h4>
-                        <div class="d-flex">
-                            <a class="btn btn-lg-square rounded-circle mx-2"
-                                href="{{ asset('img/events/kisumu/image-2.jpeg') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            {{-- <a class="btn btn-lg-square rounded-circle mx-2" href=""><i
-                                        class="fa fa-link"></i></a> --}}
-                        </div>
+            <div class="event-item">
+                <img src="{{ asset('img/events/event-2.jpg') }}" class="img-fluid w-100" alt="Image">
+                <div class="event-content p-4">
+                    <div class="d-flex justify-content-between mb-4">
+                        <span class="text-body"><i class="fas fa-map-marker-alt me-2"></i>Grand Mahal, Dubai
+                            2100.</span>
+                        <span class="text-body"><i class="fas fa-calendar-alt me-2"></i>10 Feb, 2023</span>
                     </div>
+                    <h4 class="mb-4">How To Build A Cleaning Plan</h4>
+                    <p class="mb-4">Lorem ipsum dolor sit amet consectur adip sed eiusmod amet consectur adip sed
+                        eiusmod tempor.</p>
+                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
                 </div>
             </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item kisumu wow fadeInUp" data-wow-delay="0.5s">
-                <div class="portfolio-inner rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/kisumu/image-3.jpeg') }}" alt="">
-                    <div class="portfolio-text">
-                        <h4 class="text-white mb-4">
-                            &nbsp;
-                        </h4>
-                        <div class="d-flex">
-                            <a class="btn btn-lg-square rounded-circle mx-2"
-                                href="{{ asset('img/events/kisumu/image-3.jpeg') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            {{-- <a class="btn btn-lg-square rounded-circle mx-2" href=""><i
-                                        class="fa fa-link"></i></a> --}}
-                        </div>
+            <div class="event-item">
+                <img src="{{ asset('img/events/event-3.jpg') }}" class="img-fluid w-100" alt="Image">
+                <div class="event-content p-4">
+                    <div class="d-flex justify-content-between mb-4">
+                        <span class="text-body"><i class="fas fa-map-marker-alt me-2"></i>Grand Mahal, Dubai
+                            2100.</span>
+                        <span class="text-body"><i class="fas fa-calendar-alt me-2"></i>10 Feb, 2023</span>
                     </div>
+                    <h4 class="mb-4">How To Build A Cleaning Plan</h4>
+                    <p class="mb-4">Lorem ipsum dolor sit amet consectur adip sed eiusmod amet consectur adip sed
+                        eiusmod tempor.</p>
+                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
                 </div>
             </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item bv wow fadeInUp" data-wow-delay="0.1s">
-                <div class="portfolio-inner rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/bv/image-1.JPG') }}" alt="">
-                    <div class="portfolio-text">
-                        <h4 class="text-white mb-4">
-                            &nbsp;
-                        </h4>
-                        <div class="d-flex">
-                            <a class="btn btn-lg-square rounded-circle mx-2"
-                                href="{{ asset('img/events/bv/image-1.JPG') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            {{-- <a class="btn btn-lg-square rounded-circle mx-2" href=""><i
-                                        class="fa fa-link"></i></a> --}}
-                        </div>
+            <div class="event-item">
+                <img src="{{ asset('img/events/event-4.jpg') }}" class="img-fluid w-100" alt="Image">
+                <div class="event-content p-4">
+                    <div class="d-flex justify-content-between mb-4">
+                        <span class="text-body"><i class="fas fa-map-marker-alt me-2"></i>Grand Mahal, Dubai
+                            2100.</span>
+                        <span class="text-body"><i class="fas fa-calendar-alt me-2"></i>10 Feb, 2023</span>
                     </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item bv wow fadeInUp" data-wow-delay="0.3s">
-                <div class="portfolio-inner rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/bv/image-2.JPG') }}" alt="">
-                    <div class="portfolio-text">
-                        <h4 class="text-white mb-4">
-                            &nbsp;
-                        </h4>
-                        <div class="d-flex">
-                            <a class="btn btn-lg-square rounded-circle mx-2"
-                                href="{{ asset('img/events/bv/image-2.JPG') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            {{-- <a class="btn btn-lg-square rounded-circle mx-2" href=""><i
-                                        class="fa fa-link"></i></a> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item bv wow fadeInUp" data-wow-delay="0.5s">
-                <div class="portfolio-inner rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/bv/image-3.JPG') }}" alt="">
-                    <div class="portfolio-text">
-                        <h4 class="text-white mb-4">
-                            &nbsp;
-                        </h4>
-                        <div class="d-flex">
-                            <a class="btn btn-lg-square rounded-circle mx-2"
-                                href="{{ asset('img/events/bv/image-3.JPG') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            {{-- <a class="btn btn-lg-square rounded-circle mx-2" href=""><i
-                                        class="fa fa-link"></i></a> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item absa wow fadeInUp" data-wow-delay="0.1s">
-                <div class="portfolio-inner rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/absa/image-4.jpg') }}" alt="">
-                    <div class="portfolio-text">
-                        <h4 class="text-white mb-4">
-                            &nbsp;
-                        </h4>
-                        <div class="d-flex">
-                            <a class="btn btn-lg-square rounded-circle mx-2"
-                                href="{{ asset('img/events/absa/image-4.jpg') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            {{-- <a class="btn btn-lg-square rounded-circle mx-2" href=""><i
-                                        class="fa fa-link"></i></a> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item absa wow fadeInUp" data-wow-delay="0.3s">
-                <div class="portfolio-inner rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/absa/image-5.jpg') }}" alt="">
-                    <div class="portfolio-text">
-                        <h4 class="text-white mb-4">
-                            &nbsp;
-                        </h4>
-                        <div class="d-flex">
-                            <a class="btn btn-lg-square rounded-circle mx-2"
-                                href="{{ asset('img/events/absa/image-5.jpg') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            {{-- <a class="btn btn-lg-square rounded-circle mx-2" href=""><i
-                                        class="fa fa-link"></i></a> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item absa wow fadeInUp" data-wow-delay="0.5s">
-                <div class="portfolio-inner rounded">
-                    <img class="img-fluid" src="{{ asset('img/events/absa/image-6.jpg') }}" alt="">
-                    <div class="portfolio-text">
-                        <h4 class="text-white mb-4">
-                            &nbsp;
-                        </h4>
-                        <div class="d-flex">
-                            <a class="btn btn-lg-square rounded-circle mx-2"
-                                href="{{ asset('img/events/absa/image-6.jpg') }}" data-lightbox="portfolio"><i
-                                    class="fa fa-eye"></i></a>
-                            {{-- <a class="btn btn-lg-square rounded-circle mx-2" href=""><i
-                                        class="fa fa-link"></i></a> --}}
-                        </div>
-                    </div>
+                    <h4 class="mb-4">How To Build A Cleaning Plan</h4>
+                    <p class="mb-4">Lorem ipsum dolor sit amet consectur adip sed eiusmod amet consectur adip sed
+                        eiusmod tempor.</p>
+                    <a class="btn-hover-bg btn btn-primary text-white py-2 px-4" href="#">Read More</a>
                 </div>
             </div>
         </div>
+        <!--/.event - carousel -->
     </div>
 </div>

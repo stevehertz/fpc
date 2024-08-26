@@ -1,9 +1,10 @@
 <?php
 
-use App\Enums\EventPaymentStatus;
 use Carbon\Carbon;
 use App\Enums\EventStatus;
 use App\Enums\EventPriority;
+use App\Enums\DelegatesPosition;
+use App\Enums\EventPaymentStatus;
 use App\Enums\ExhibitionRegisterAs;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
@@ -215,7 +216,8 @@ return [
         'EventPriority' => EventPriority::class,
         'EventStatus' => EventStatus::class,
         'Carbon' => Carbon::class,
-        'EventPaymentStatus' => EventPaymentStatus::class
+        'EventPaymentStatus' => EventPaymentStatus::class,
+        'DelegatesPosition' => DelegatesPosition::class
     ])->toArray(),
 
 ];

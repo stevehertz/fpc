@@ -70,7 +70,10 @@ class PagesController extends Controller
     }
 
     public function events()  {
-        return view('frontend.pages.events');
+        $criticalEventData = $this->eventRepositories->showUpcomingCriticalEvent();
+        return view('frontend.pages.events', [
+            'criticalEvent' => $criticalEventData
+        ]);
     }
 
     public function faqs()  

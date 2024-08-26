@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAttendanceRequest;
+use App\Http\Requests\StoreDelegatesRequest;
 use App\Mail\EventConfirmationMail;
 use App\Repositories\AttendanceRepository;
 use App\Repositories\EventRepositories;
@@ -61,5 +62,35 @@ class ExhibitionController extends Controller
                 ]);
             }
         }
+    }
+
+    public function delegates_sign_up($slug)
+    {
+        $data = $this->eventRepositories->showEventBySlug($slug);
+        return view('frontend.exhibition.delegates-sign-up', [
+            'data' => $data
+        ]);
+    }
+
+    public function register_delegates(StoreDelegatesRequest $request)
+    {
+        $data = $request->except("_token");
+        // first register attendance
+        $attendance = $this->attendanceRepository->storeAttendance($data);
+
+        if ($attendance) {
+            return response()->json([
+                'status' => true,
+                'message' => 'You have successfully registered for this exhibition. Please wait for confirmation.'
+            ]);
+        }
+    }
+
+    public function exhibitors_sign_up($slug)
+    {
+        $data = $this->eventRepositories->showEventBySlug($slug);
+        return view('frontend.exhibition.delegates-sign-up', [
+            'data' => $data
+        ]);
     }
 }

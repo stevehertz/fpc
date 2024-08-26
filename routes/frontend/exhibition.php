@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/{slug}/delegates/sign-up', [ExhibitionController::class, 'delegates_sign_up'])->name('delegates.sign-up');
+
+Route::post('/delegates/register', [ExhibitionController::class, 'register_delegates'])->name('delegates.register');
+
 Route::get('/{slug}/sign-up', [ExhibitionController::class, 'sign_up'])->name('sign.up.for.conference.and.exhibition');
 
 Route::post('/exhibition/register', [ExhibitionController::class, 'register'])->name('exhibition.register');

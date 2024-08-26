@@ -33,7 +33,9 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="description">Event Description</label>
-                                            <textarea name="description" id="description" class="form-control" rows="3" placeholder="Enter event description">@isset($data) {{ $data->description }} @endisset</textarea>
+                                            <textarea name="description" id="description" class="form-control" rows="3" placeholder="Enter event description">@isset($data){{ $data->description }}
+@endisset
+</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -191,5 +193,108 @@
 @endsection
 
 @push('scripts')
-    @include('backend.events.scripts')
+    <script>
+        $(document).ready(function() {
+            $('#newEventForm').submit(function(e) {
+                e.preventDefault();
+                let form = $(this);
+                let formData = new FormData(form[0]);
+                let path = '{{ route('backend.events.store') }}';
+                $.ajax({
+                    type: "POST",
+                    url: path,
+                    data: formData,
+                    dataType: "json",
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function() {
+                        form.find('button[type=submit]').html(
+                            '<i class="fa fa-spinner fa-spin"></i>'
+                        );
+                        form.find('button[type=submit]').attr('disabled', true);
+                    },
+                    complete: function() {
+                        form.find('button[type=submit]').html(
+                            'Create'
+                        );
+                        form.find('button[type=submit]').attr('disabled', false);
+                    },
+                    success: function(data) {
+                        if (data['status']) {
+                            toastr.success(data['message']);
+                            setTimeout(() => {
+                                window.location.href =
+                                    '{{ route('backend.events.index') }}'
+                            }, 1000);
+                        } else {
+                            toastr.error(data['message']);
+                            setTimeout(() => {
+                                location.reload();
+                            }, 1000);
+                        }
+                    },
+                    error: function(data) {
+                        var errors = data.responseJSON;
+                        var errorsHtml = '<ul>';
+                        $.each(errors['errors'], function(key, value) {
+                            errorsHtml += '<li>' + value + '</li>';
+                        });
+                        errorsHtml += '</ul>';
+                        toastr.error(errorsHtml);
+                    }
+                });
+            });
+            @isset($data)
+                $('#updateEventForm').submit(function(e) {
+                    e.preventDefault();
+                    let form = $(this);
+                    let formData = new FormData(form[0]);
+                    let path = '{{ route('backend.events.update', $data->id) }}';
+                    $.ajax({
+                        type: "POST",
+                        url: path,
+                        data: formData,
+                        dataType: "json",
+                        contentType: false,
+                        processData: false,
+                        beforeSend: function() {
+                            form.find('button[type=submit]').html(
+                                '<i class="fa fa-spinner fa-spin"></i>'
+                            );
+                            form.find('button[type=submit]').attr('disabled', true);
+                        },
+                        complete: function() {
+                            form.find('button[type=submit]').html(
+                                'Update'
+                            );
+                            form.find('button[type=submit]').attr('disabled', false);
+                        },
+                        success: function(data) {
+                            if (data['status']) {
+                                toastr.success(data['message']);
+                                setTimeout(() => {
+                                    window.location.href =
+                                        '{{ route('backend.events.index') }}'
+                                }, 1000);
+                            } else {
+                                toastr.error(data['message']);
+                                setTimeout(() => {
+                                    location.reload();
+                                }, 1000);
+                            }
+                        },
+                        error: function(data) {
+                            var errors = data.responseJSON;
+                            var errorsHtml = '<ul>';
+                            $.each(errors['errors'], function(key, value) {
+                                errorsHtml += '<li>' + value + '</li>';
+                            });
+                            errorsHtml += '</ul>';
+                            toastr.error(errorsHtml);
+                        }
+                    });
+                });
+            @endisset
+        });
+    </script>
 @endpush

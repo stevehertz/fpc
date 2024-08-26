@@ -16,9 +16,9 @@
                     <h1 class="display-5 mb-5">
                         REGISTER HERE
                     </h1>
-                    <form id="registerExhibitionForm" method="POST">
+                    <form id="registerDelegatesForm" method="POST">
                         @csrf
-                        <input type="hidden" name="event_id" value="{{ $data->id }}"> 
+                        <input type="hidden" name="event_id" value="{{ $data->id }}">
                         <!-- Step 1 -->
                         <div class="row g-3 form-step">
                             <div class="col-12 col-md-6">
@@ -57,59 +57,21 @@
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
-                                <div class="form-floating">
-                                    <input type="text" name="position" class="form-control" id="position"
-                                        placeholder="Position" required>
-                                    <label for="position">Position</label>
+                                <div class="form-group">
+                                    <select name="position" class="form-control select2" style="width: 100%;" required>
+                                        <option selected="selected" disabled="disabled">
+                                            Position
+                                        </option>
+                                        @foreach (\DelegatesPosition::toArray() as $key => $value)
+                                            <option value="{{ $key }}">
+                                                {{ $value }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <input type="hidden" name="user_type" value="{{ \ExhibitionRegisterAs::DELEGATE }}">
                             <div class="col-12">
-                                <button class="btn btn-primary py-3 px-4 next-step" type="button">
-                                    Next
-                                </button>
-                            </div>
-                        </div>
-                        <!-- Step 2 -->
-                        <div class="row g-3 form-step d-one">
-                            <div class="col-12 col-md-12">
-                                <h2 class="mb-3">
-                                    Payments Details
-                                </h2>
-                                <p>
-                                    Complete payments
-                                </p>
-                                <ol>
-                                    <li>Select</li>
-                                    <li>Select Lipa na M-PESA</li>
-                                    <li>Select Pay Bill</li>
-                                    <li>Enter the following details</li>
-                                </ol>
-                                <div class="bg-light d-flex align-self-stretch box p-4">
-                                    <p>
-                                        Business Number: <b>400200</b> <br>
-                                        Account Number: <b>01136507311500</b><br>
-                                        Amount: <b>KES 50,000.00</b><br><br>
-                                        {{-- or <br> <br>
-                                        <a href="" class="">
-                                            Tap to M-PESA
-                                        </a> --}}
-                                    </p>
-                                </div>
-                                <input type="hidden" name="amount" value="50000">
-                                <input type="hidden" name="paid" value="50000">
-                            </div>
-                            <div class="col-12 col-md-12">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" name="transaction_code" id="transaction_code"
-                                        placeholder="Transaction Code" required>
-                                    <label for="transaction_code">Transaction Code</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn btn-secondary py-3 px-4 previous-step" type="button">
-                                    Previous
-                                </button>
                                 <button class="btn btn-primary py-3 px-4" type="submit">
                                     Register
                                 </button>
@@ -134,4 +96,3 @@
 @push('scripts')
     @include('frontend.exhibition.scripts')
 @endpush
-    
