@@ -6,8 +6,10 @@ use App\Enums\EventPriority;
 use App\Enums\DelegatesPosition;
 use App\Enums\EventPaymentStatus;
 use App\Enums\ExhibitionRegisterAs;
+use Spatie\Analytics\AnalyticsFacade;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
+use App\Enums\EventAttendanceConfirmationStatus;
 
 return [
 
@@ -197,6 +199,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Spatie\Analytics\AnalyticsServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -217,7 +220,8 @@ return [
         'EventStatus' => EventStatus::class,
         'Carbon' => Carbon::class,
         'EventPaymentStatus' => EventPaymentStatus::class,
-        'DelegatesPosition' => DelegatesPosition::class
+        'DelegatesPosition' => DelegatesPosition::class,
+        'EventAttendanceConfirmationStatus' => EventAttendanceConfirmationStatus::class,
     ])->toArray(),
 
 ];

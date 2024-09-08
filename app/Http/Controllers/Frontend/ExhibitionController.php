@@ -93,4 +93,9 @@ class ExhibitionController extends Controller
             'data' => $data
         ]);
     }
+
+    public function confirm($id)  
+    {
+        
+    }
 }

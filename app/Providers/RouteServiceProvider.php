@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/';
 
     public const DASHBOARD = '/dashboard';
 
@@ -38,6 +38,8 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')->group(base_path('routes/backend/posts.php'));
             Route::middleware('web')->group(base_path('routes/backend/slider.php'));
             Route::middleware('web')->group(base_path('routes/backend/events.php'));
+            Route::middleware('web')->group(base_path('routes/backend/analytics.php'));
+        
         });
     }
 }

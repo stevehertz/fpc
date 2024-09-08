@@ -21,3 +21,5 @@ Route::post('/delegates/register', [ExhibitionController::class, 'register_deleg
 Route::get('/{slug}/sign-up', [ExhibitionController::class, 'sign_up'])->name('sign.up.for.conference.and.exhibition');
 
 Route::post('/exhibition/register', [ExhibitionController::class, 'register'])->name('exhibition.register');
+
+Route::get('/{id}/qrcode/confirm', [ExhibitionController::class, 'confirm'])->name('qrcode.confirm');

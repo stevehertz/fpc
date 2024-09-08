@@ -84,59 +84,48 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a href="{{ route('backend.events.index') }}" class="nav-link @if (Route::is('backend.events.index')) active @endif">
+                <li class="nav-item @if (Route::is('backend.events.index') || Route::is('backend.attendance.index')) menu-open @endif">
+                    <a href="#" class="nav-link @if (Route::is('backend.events.index') || Route::is('backend.attendance.index')) active @endif">
                         <i class="nav-icon fas fa-calendar-alt"></i>
                         <p>
                             @lang('sidebar.events')
-                        </p>
-                    </a>
-                </li>
-
-                {{-- <li class="nav-item">
-                    <a href="{{ route('terms.conditions.index') }}" class="nav-link @if (Route::is('terms.conditions.index')) active @endif">
-                        <i class="nav-icon fas fa-database"></i>
-                        <p>
-                            @lang('sidebar.terms-and-conditions')
-                        </p>
-                    </a>
-                </li> --}}
-                
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
-                        <p>
-                            Charts
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/charts/chartjs.html" class="nav-link">
+                            <a href="{{ route('backend.events.index') }}" class="nav-link @if (Route::is('backend.events.index')) active @endif">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>ChartJS</p>
+                                <p>@lang('sidebar.events')</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/charts/flot.html" class="nav-link">
+                            <a href="{{ route('backend.attendance.index') }}" class="nav-link @if (Route::is('backend.attendance.index'))
+                                active
+                            @endif">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Flot</p>
+                                <p>@lang('sidebar.attendance')</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/charts/inline.html" class="nav-link">
+                            <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Inline</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/charts/uplot.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>uPlot</p>
+                                <p>@lang('sidebar.payments')</p>
                             </a>
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('analytics.index') }}" class="nav-link @if (Route::is('analytics.index')) active @endif">
+                        <i class="nav-icon fas fa-database"></i>
+                        <p>
+                            @lang('sidebar.analytics')
+                        </p>
+                    </a>
+                </li>
+                
+              
 
                 <li class="nav-header">EXAMPLES</li>
 

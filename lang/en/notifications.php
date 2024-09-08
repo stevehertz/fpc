@@ -3,6 +3,7 @@
 return [
     'delete_alert' => 'Are you sure?',
     'delete_message' => 'Current record will be moved to trash!',
+    'confirm_attendance' => 'You want to confirm attendance for the registered user',
     'force_delete_message' => 'Current record deleted cannot be recovered anymore!',
     'restore' => 'Current record will be restored back!',
     'exception_message' => 'Exception message: :message',

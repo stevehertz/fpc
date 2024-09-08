@@ -38,7 +38,7 @@
                                                 {{ $loop->iteration }}
                                             </td>
                                             <td>
-                                                <a href="{{ route('backend.events.edit', $event->id) }}">
+                                                <a href="{{ route('backend.events.view', $event->id) }}">
                                                     {{ $event->name }}
                                                 </a>
                                             </td>

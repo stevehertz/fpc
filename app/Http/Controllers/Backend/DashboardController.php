@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\AnalyticsRepository;
 
 class DashboardController extends Controller
 {
@@ -12,9 +13,11 @@ class DashboardController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    private $analyticsRepository;
+    public function __construct(AnalyticsRepository $analyticsRepository)
     {
         $this->middleware('auth');
+        $this->analyticsRepository = $analyticsRepository;
     }
 
     /**
@@ -24,6 +27,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('backend.dashboard');
+        $data = $this->analyticsRepository->getTrafficData();
+        return view('backend.dashboard', [
+            'data' => $data,
+        ]);
     }
 }

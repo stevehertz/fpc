@@ -20,6 +20,8 @@ class Attendance extends Model
         'organization',
         'position',
         'user_type',
+        'confirmation_status',
+        'qr_code',
         'created_by',
         'updated_by',
         'deleted_by'

@@ -63,7 +63,7 @@
                                     <label for="position">Position</label>
                                 </div>
                             </div>
-                            <input type="hidden" name="user_type" value="{{ \ExhibitionRegisterAs::DELEGATE }}">
+                            <input type="hidden" name="user_type" value="{{ \ExhibitionRegisterAs::EXHIBITOR }}">
                             <div class="col-12">
                                 <button class="btn btn-primary py-3 px-4 next-step" type="button">
                                     Next
