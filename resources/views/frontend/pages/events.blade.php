@@ -10,7 +10,7 @@
     @include('frontend.include.upcoming')
 
     <!--Events Start-->
-    @include('frontend.include.events')
+    {{-- @include('frontend.include.events') --}}
     <!--Events End-->
 
 @endsection
