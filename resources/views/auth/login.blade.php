@@ -71,11 +71,12 @@
                                 @endif
                             </div>
                             <div class="col-6">
-                                @if (Route::has('register'))
+                                &nbsp;
+                                {{-- @if (Route::has('register'))
                                     <a class="btn btn-link" href="{{ route('register') }}">
                                         {{ __('Register a new membership') }}
                                     </a>
-                                @endif
+                                @endif --}}
                             </div>
                         </div>
                     </form>

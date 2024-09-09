@@ -11,6 +11,7 @@ use Endroid\QrCode\Writer\PngWriter;
 use Endroid\QrCode\Encoding\Encoding;
 use Endroid\QrCode\ErrorCorrectionLevel;
 use App\Enums\EventAttendanceConfirmationStatus;
+use App\Enums\ExhibitionRegisterAs;
 
 class AttendanceRepository
 {
@@ -40,6 +41,31 @@ class AttendanceRepository
             ->with(['event', 'payment'])
             ->latest()->get();
     }
+
+    public function getAllDelegates($userType = ExhibitionRegisterAs::DELEGATE)
+    {
+        return Attendance::where('user_type', $userType)->get();
+    }
+
+    public function getDelegatesForAnEvent(array  $attributes, $userType = ExhibitionRegisterAs::DELEGATE)
+    {
+        return Attendance::where('event_id', data_get($attributes, 'event_id'))
+            ->where('user_type', $userType)
+            ->get();
+    }
+
+    public function getAllExhibitors($userType = ExhibitionRegisterAs::EXHIBITOR)
+    {
+        return Attendance::where('user_type', $userType)->get();
+    }
+
+    public function getExhibitorsForAnEvent(array  $attributes, $userType = ExhibitionRegisterAs::EXHIBITOR)
+    {
+        return Attendance::where('event_id', data_get($attributes, 'event_id'))
+            ->where('user_type', $userType)
+            ->get();
+    }
+
 
     public function storeAttendance(array $attributes)
     {
@@ -98,10 +124,11 @@ class AttendanceRepository
                 // Save QR code data to the database
                 $attendance->update([
                     'confirmation_status' => EventAttendanceConfirmationStatus::CONFIRMED,
-                    'qr_code' => $qrCodeBase64
+                    'qr_code' => $path
                 ]);
 
                 return $attendance;
+
             } catch (\Exception $e) {
                 // Handle exception (log error or return a specific message)
                 Log::error('Error generating or storing QR code: ' . $e->getMessage());
@@ -111,6 +138,11 @@ class AttendanceRepository
         return false;
     }
 
+    public function cancelAttendance()  
+    {
+        
+    }
+
     public function confirmQR($id)
     {
         // confirm   
@@ -118,6 +150,7 @@ class AttendanceRepository
         if ($attendance) {
 
             $today = Carbon::now();
+
         }
 
         return false;

@@ -7,6 +7,45 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-12 col-sm-4">
+                    <div class="info-box bg-light">
+                        <div class="info-box-content">
+                            <span class="info-box-text text-center text-muted">
+                                Total Registered
+                            </span>
+                            <span class="info-box-number text-center text-muted mb-0">
+                                {{ count($data) }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <div class="info-box bg-light">
+                        <div class="info-box-content">
+                            <span class="info-box-text text-center text-muted">
+                                Delegates Registered
+                            </span>
+                            <span class="info-box-number text-center text-muted mb-0">
+                                {{ count($delegates) }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <div class="info-box bg-light">
+                        <div class="info-box-content">
+                            <span class="info-box-text text-center text-muted">
+                                Exhibitors Registered
+                            </span>
+                            <span class="info-box-number text-center text-muted mb-0">
+                                {{ count($exhibitors) }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
                 <div class="col-12 col-md-12">
                     <div class="card">
                         <div class="card-body">
@@ -180,14 +219,12 @@
                             },
                             dataType: "json",
                             success: function(data) {
-                                console.log(data);
-                                // if (data['status']) {
-                                //     toastr.success(data['message']);
-
-                                //     // setTimeout(() => {
-                                //     //     location.reload();
-                                //     // }, 500);
-                                // }
+                                if (data['status']) {
+                                    toastr.success(data['message']);
+                                    setTimeout(() => {
+                                        location.reload();
+                                    }, 1000);
+                                }
                             }
                         });
                     } else if (result.isDenied) {
