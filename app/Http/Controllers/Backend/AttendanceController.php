@@ -10,7 +10,9 @@ use App\Repositories\EventRepositories;
 use App\Repositories\AttendanceRepository;
 use App\Http\Requests\StoreAttendanceRequest;
 use App\Http\Requests\UpdateAttendanceRequest;
+use App\Mail\AttendanceCCNdegwaMail;
 use App\Mail\AttendanceConfirmationMail;
+use Illuminate\Foundation\Mix;
 use Illuminate\Support\Facades\Mail;
 
 class AttendanceController extends Controller
@@ -77,8 +79,15 @@ class AttendanceController extends Controller
             // mail to the attendance email
             $qrCodePath = $attendance->qr_code;
 
-            Mail::to('stevekamahertz@gmail.com')->send(new AttendanceConfirmationMail($attendance, $qrCodePath));
+            $att_email = $attendance->email;
+            $ndegwa_email = "ndegwaedwin@gmail.com";
 
+            if(file_exists($qrCodePath))
+            {
+                Mail::to($att_email)->send(new AttendanceConfirmationMail($attendance, $qrCodePath));
+                Mail::to($ndegwa_email)->send(new AttendanceCCNdegwaMail($attendance, $qrCodePath));
+            }
+            
             return response()->json([
                 'status' => true,
                 'message' => 'You have successfully confirmed attendance registration for ' . $attendance->first_name . ' ' . $attendance->last_name
