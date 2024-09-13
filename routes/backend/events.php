@@ -23,5 +23,7 @@ Route::prefix('backend')->name('backend.')->group(function(){
     Route::prefix('attendance')->name('attendance.')->group(function(){
         Route::get('/', [AttendanceController::class, 'index'])->name('index');
         Route::get('/{attendance_id}/confirm', [AttendanceController::class, 'confirmAttendance'])->name('confirm');
+        Route::post('/{attendance}/confirm/exhibitor', [AttendanceController::class, 'confirmExhibitors'])->name('confirm.exhibitor');
+        Route::post('/{attendance}/cancel/attendance', [AttendanceController::class, 'cancelAttendance'])->name('cancel.attendance');
     });
 });

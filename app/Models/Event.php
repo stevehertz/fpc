@@ -41,4 +41,9 @@ class Event extends Model
         return $this->hasMany(Payment::class, 'event_id');    
     }
 
+    public function cancelAttendance()  
+    {
+        return $this->hasMany(CancelAttendance::class);    
+    }
+
 }

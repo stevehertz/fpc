@@ -6,13 +6,17 @@ use App\Models\Payment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePaymentRequest;
 use App\Http\Requests\UpdatePaymentRequest;
+use App\Repositories\PaymentRepository;
 
 class PaymentController extends Controller
 {
 
-    public function __construct()
+    private $paymentRepository;
+
+    public function __construct(PaymentRepository $paymentRepository)
     {
         $this->middleware('auth');
+        $this->paymentRepository = $paymentRepository;
     }
 
     /**
@@ -21,6 +25,10 @@ class PaymentController extends Controller
     public function index()
     {
         //
+        $data = $this->paymentRepository->getAllPayments();
+        return view('backend.payments.index', [
+            'data' => $data,
+        ]);
     }
 
     /**

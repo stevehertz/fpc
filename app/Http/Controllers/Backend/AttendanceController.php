@@ -2,28 +2,34 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Enums\EventPaymentStatus;
 use setasign\Fpdi\Fpdi;
 use App\Models\Attendance;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CancelAttendanceRequest;
+use App\Http\Requests\ConfirmExhibitionRequest;
 use App\Repositories\EventRepositories;
 use App\Repositories\AttendanceRepository;
 use App\Http\Requests\StoreAttendanceRequest;
 use App\Http\Requests\UpdateAttendanceRequest;
+use App\Mail\AttendanceCancelMail;
 use App\Mail\AttendanceCCNdegwaMail;
 use App\Mail\AttendanceConfirmationMail;
+use App\Repositories\PaymentRepository;
 use Illuminate\Foundation\Mix;
 use Illuminate\Support\Facades\Mail;
 
 class AttendanceController extends Controller
 {
 
-    private $attendanceRepository, $eventRepositories;
-    public function __construct(AttendanceRepository $attendanceRepository, EventRepositories $eventRepositories)
+    private $attendanceRepository, $eventRepositories, $paymentRepository;
+    public function __construct(AttendanceRepository $attendanceRepository, EventRepositories $eventRepositories, PaymentRepository $paymentRepository)
     {
         $this->middleware('auth');
         $this->attendanceRepository = $attendanceRepository;
         $this->eventRepositories = $eventRepositories;
+        $this->paymentRepository = $paymentRepository;
     }
 
     /**
@@ -82,12 +88,11 @@ class AttendanceController extends Controller
             $att_email = $attendance->email;
             $ndegwa_email = "ndegwaedwin@gmail.com";
 
-            if(file_exists($qrCodePath))
-            {
+            if (file_exists($qrCodePath)) {
                 Mail::to($att_email)->send(new AttendanceConfirmationMail($attendance, $qrCodePath));
                 Mail::to($ndegwa_email)->send(new AttendanceCCNdegwaMail($attendance, $qrCodePath));
             }
-            
+
             return response()->json([
                 'status' => true,
                 'message' => 'You have successfully confirmed attendance registration for ' . $attendance->first_name . ' ' . $attendance->last_name
@@ -98,7 +103,77 @@ class AttendanceController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function cancelAttendance() {}
+    public function confirmExhibitors(ConfirmExhibitionRequest $request, Attendance $attendance)
+    {
+        // check and update payments 
+        $data = $request->except("_token");
+        $payments = $this->paymentRepository->confirmAndUpdatePayments($data, $attendance);
+
+        if ($payments) {
+
+            if($payments->payment_status == EventPaymentStatus::PAID)
+            {
+                // print qr code
+                $attendance = $this->attendanceRepository->generateAndStoreQrCode($attendance->id);
+
+                // mail to the attendance email
+                $qrCodePath = $attendance->qr_code;
+
+                $att_email = $attendance->email;
+                $ndegwa_email = "ndegwaedwin@gmail.com";
+
+                if (file_exists($qrCodePath)) {
+                    Mail::to($att_email)->send(new AttendanceConfirmationMail($attendance, $qrCodePath));
+                    Mail::to($ndegwa_email)->send(new AttendanceCCNdegwaMail($attendance, $qrCodePath));
+                }
+
+                return response()->json([
+                    'status' => true,
+                    'message' => 'You have successfully confirmed attendance registration for ' . $attendance->first_name . ' ' . $attendance->last_name
+                ]);
+
+            }
+
+            /// payment was not completely cleared 
+            /// exhibitor cannot attebd the event 
+        }  
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Transaction code enter was not found!'
+        ]);
+
+
+        // confirm attendance 
+        // print and send qr code
+    }
+
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function cancelAttendance(CancelAttendanceRequest $request, Attendance $attendance) 
+    {
+        $data = $request->except("_token");
+        $cancelAttendance = $this->attendanceRepository->cancelAttendance($data, $attendance);
+        if($cancelAttendance)
+        {
+
+            $data = [
+                'reasons' => $cancelAttendance->reasons
+            ];
+
+            // $attendanceEmail = $attendance->email;
+            $attendanceEmail = 'stevekamahertz@gmail.com';
+
+            Mail::to($attendanceEmail)->send(new AttendanceCancelMail($attendance, $data));
+
+            return response()->json([
+                'status' => true,
+                'message' => 'You have successfully cancelled attendance for ' . $attendance->first_name . ' ' . $attendance->last_name
+            ]);
+        }
+    }
 
     /**
      * Store a newly created resource in storage.

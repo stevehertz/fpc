@@ -172,9 +172,12 @@
                                                             CONFIRM
                                                         </a>
                                                     @else
+                                                        <a href="javascript:void(0)" data-id="{{ $attendance->id }}"
+                                                            class="btn btn-sm btn-success confirmExhibitorsAttendanceBtn">
+                                                            CONFIRM
+                                                        </a>
                                                     @endif
                                                 @endif
-
                                             </td>
                                         </tr>
                                     @endforeach
@@ -205,9 +208,11 @@
                 Swal.fire({
                     title: '{{ trans('notifications.delete_alert') }}',
                     text: '{{ trans('notifications.confirm_attendance') }}',
+                    icon: 'warning',
                     showDenyButton: false,
                     showCancelButton: true,
                     confirmButtonText: 'Confirm',
+                    cancelButtonText: 'No'
                 }).then((result) => {
                     /* Read more about isConfirmed, isDenied below */
                     if (result.isConfirmed) {
@@ -227,10 +232,185 @@
                                 }
                             }
                         });
-                    } else if (result.isDenied) {
-                        Swal.fire('Changes are not saved', '', 'info')
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        Swal.fire({
+                            title: 'Reason for Cancellation',
+                            input: 'textarea',
+                            inputPlaceholder: 'Enter your reason for cancelling here...',
+                            showCancelButton: true,
+                            confirmButtonText: 'Submit',
+                            cancelButtonText: 'Close',
+                            preConfirm: (reasons) => {
+                                if (!reasons) {
+                                    toastr.error(
+                                        'Please enter a reason for cancelling');
+                                }
+                                return {
+                                    reasons
+                                };
+                            }
+                        }).then((reasonResult) => {
+                            if (reasonResult.isConfirmed && reasonResult.value) {
+
+                                const data = {
+                                    reasons: reasonResult.value.reasons,
+                                    _token: '{{ csrf_token() }}' // Include CSRF token for security
+                                };
+
+                                let path =
+                                    '{{ route('backend.attendance.cancel.attendance', ':attendance') }}';
+                                path = path.replace(':attendance', attendance_id);
+                                $.ajax({
+                                    type: "POST",
+                                    url: path,
+                                    data: data,
+                                    dataType: "json",
+                                    success: function(data) {
+                                        if (data['status']) {
+                                            toastr.success(data['message']);
+                                            setTimeout(() => {
+                                                location.reload();
+                                            }, 1000);
+                                        }
+                                    }
+                                });
+                            }
+                        });
                     }
                 });
+            });
+
+            $(document).on('click', '.confirmExhibitorsAttendanceBtn', function(e) {
+                e.preventDefault();
+                let attendance_id = $(this).data('id');
+                // When the confirm button is clicked
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "Do you want to proceed with this action?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Confirm',
+                    cancelButtonText: 'No'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // If user clicks "Yes", show another alert with a form for payment details
+                        Swal.fire({
+                            title: 'Payment Details',
+                            html: `
+                            <form id="attendanceConfirmationForm">
+                                <label for="amount">Paid Amount:</label>
+                                <input type="number" id="amount" name="paid" class="swal2-input" placeholder="Enter Paid amount">
+                                <label for="transactionCode">Transaction Code:</label>
+                                <input type="text" id="transactionCode" name="transaction_code" class="swal2-input" placeholder="Enter transaction code">
+                            </form>`,
+                            confirmButtonText: 'Submit',
+                            preConfirm: () => {
+                                // Collect data from the form
+                                const amount = Swal.getPopup().querySelector('#amount')
+                                    .value;
+                                const transactionCode = Swal.getPopup().querySelector(
+                                    '#transactionCode').value;
+                                if (!amount || !transactionCode) {
+                                    Swal.showValidationMessage(
+                                        'Please enter both amount and transaction code'
+                                    );
+                                }
+                                return {
+                                    amount,
+                                    transactionCode
+                                };
+                            }
+                        }).then((formResult) => {
+                            if (formResult.isConfirmed) {
+                                // Process payment details form submission
+
+                                const data = {
+                                    paid: formResult.value.amount,
+                                    transaction_code: formResult.value.transactionCode,
+                                    _token: '{{ csrf_token() }}' // Include CSRF token for security
+                                };
+
+                                let path =
+                                    '{{ route('backend.attendance.confirm.exhibitor', ':attendance') }}';
+                                path = path.replace(':attendance', attendance_id);
+                                $.ajax({
+                                    type: "POST",
+                                    url: path,
+                                    data: data,
+                                    dataType: "json",
+                                    success: function(data) {
+                                        if (data['status']) {
+                                            toastr.success(data['message']);
+                                            setTimeout(() => {
+                                                location.reload();
+                                            }, 1000);
+                                        }
+                                    },
+                                    error: function(data) {
+                                        var errors = data.responseJSON;
+                                        var errorsHtml = '<ul>';
+                                        $.each(errors['errors'], function(key,
+                                            value) {
+                                            errorsHtml += '<li>' +
+                                                value + '</li>';
+                                        });
+                                        errorsHtml += '</ul>';
+                                        toastr.error(errorsHtml);
+                                    }
+                                });
+
+
+                            }
+                        });
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        // If user clicks "No", show an alert with a text area for stating reasons
+                        Swal.fire({
+                            title: 'Reason for Cancellation',
+                            input: 'textarea',
+                            inputPlaceholder: 'Enter your reason for cancelling here...',
+                            showCancelButton: true,
+                            confirmButtonText: 'Submit',
+                            cancelButtonText: 'Close',
+                            preConfirm: (reasons) => {
+                                if (!reasons) {
+                                    toastr.error(
+                                        'Please enter a reason for cancelling');
+                                }
+                                return {
+                                    reasons
+                                };
+                            }
+                        }).then((reasonResult) => {
+                            if (reasonResult.isConfirmed && reasonResult.value) {
+
+                                const data = {
+                                    reasons: reasonResult.value.reasons,
+                                    _token: '{{ csrf_token() }}' // Include CSRF token for security
+                                };
+
+                                let path =
+                                    '{{ route('backend.attendance.cancel.attendance', ':attendance') }}';
+                                path = path.replace(':attendance', attendance_id);
+                                $.ajax({
+                                    type: "POST",
+                                    url: path,
+                                    data: data,
+                                    dataType: "json",
+                                    success: function(data) {
+                                        if (data['status']) {
+                                            toastr.success(data['message']);
+                                            setTimeout(() => {
+                                                location.reload();
+                                            }, 1000);
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+
+
             });
 
         });

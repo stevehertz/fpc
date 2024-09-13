@@ -84,8 +84,8 @@
                     </a>
                 </li>
 
-                <li class="nav-item @if (Route::is('backend.events.index') || Route::is('backend.attendance.index')) menu-open @endif">
-                    <a href="#" class="nav-link @if (Route::is('backend.events.index') || Route::is('backend.attendance.index')) active @endif">
+                <li class="nav-item @if (Route::is('backend.events.index') || Route::is('backend.attendance.index') || Route::is('backend.payments.index')) menu-open @endif">
+                    <a href="#" class="nav-link @if (Route::is('backend.events.index') || Route::is('backend.attendance.index') || Route::is('backend.payments.index')) active @endif">
                         <i class="nav-icon fas fa-calendar-alt"></i>
                         <p>
                             @lang('sidebar.events')
@@ -108,7 +108,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('backend.payments.index') }}" class="nav-link @if (Route::is('backend.payments.index')) active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>@lang('sidebar.payments')</p>
                             </a>
@@ -125,8 +125,6 @@
                     </a>
                 </li>
                 
-              
-
                 <li class="nav-header">EXAMPLES</li>
 
                 <li class="nav-item">

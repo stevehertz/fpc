@@ -138,9 +138,18 @@ class AttendanceRepository
         return false;
     }
 
-    public function cancelAttendance()  
+    public function cancelAttendance(array $attributes, Attendance $attendance)  
     {
-        
+        // Cancel attendance logic here
+        $attendance->update([
+            'confirmation_status' => EventAttendanceConfirmationStatus::CANCELLED
+        ]);
+        $cancelAttendance = $attendance->cancelAttendance()->create([
+            'event_id' => $attendance->event->id,
+            'reasons' => data_get($attributes, 'reasons')
+        ]);
+
+        return $cancelAttendance;
     }
 
     public function confirmQR($id)

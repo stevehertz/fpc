@@ -79,22 +79,25 @@
                 <div class="col-md-3 d-flex">
                     <div class="bg-light d-flex align-self-stretch box p-4">
                         <p>
-                            <span>Mobile No:</span> <a href="tel://+(254)722408210">+(254)722408210</a>
-                            <span>Office No:</span> <a href="tel://+(254)707407676">+(254)707407676</a>
+                            <span>Mobile No:</span><br>
+                            <a href="tel://s+254722408210">+254722408210</a>
+                            <a href="tel://+254707407676">+254707407676</a>
                         </p>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex">
                     <div class="bg-light d-flex align-self-stretch box p-4">
                         <p>
-                            <span>Email:</span> <a href="mailto:info@fpckenya.co.ke">info@fpckenya.co.ke</a>
-                            <span>&nbsp;</span> <a href="mailto:ceo@fpckenya.co.ke">ceo@fpckenya.co.ke</a>
+                            <span>Email:</span> <br>
+                            <a href="mailto:info@fpckenya.co.ke">info@fpckenya.co.ke</a>
+                            <a href="mailto:ceo@fpckenya.co.ke">ceo@fpckenya.co.ke</a>
                         </p>
                     </div>
                 </div>
                 <div class="col-md-3 d-flex">
                     <div class="bg-light d-flex align-self-stretch box p-4">
-                        <p><span>Website</span> <a href="{{ route('home') }}">https://fpckenya.co.ke/</a></p>
+                        <p><span>Website</span> <br>
+                        <a href="{{ route('home') }}">https://fpckenya.co.ke/</a></p>
                     </div>
                 </div>
             </div>

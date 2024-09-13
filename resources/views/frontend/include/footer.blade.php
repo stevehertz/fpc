@@ -5,7 +5,7 @@
             <div class="col-lg-3 col-md-6">
                 <h4 class="text-white mb-4">Our Office</h4>
                 <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Plaza 2000, 3rd floor, Mombasa Road, Nairobi, Kenya</p>
-                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+(254)722408210
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+254722408210, +254707407676
                 </p>
                 <p class="mb-2">
                     <i class="fa fa-envelope me-3"></i>info@fpckenya.co.ke

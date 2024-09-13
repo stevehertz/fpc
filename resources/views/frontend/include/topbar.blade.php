@@ -3,7 +3,7 @@
         <div class="col-lg-7 px-5 text-start">
             <div class="h-100 d-inline-flex align-items-center me-4">
                 <span class="fa fa-phone-alt me-2"></span>
-                <span>+(254)722408210</span>
+                <span>+254722408210, +254707407676</span>
             </div>
             <div class="h-100 d-inline-flex align-items-center">
                 <span class="far fa-envelope me-2"></span>

@@ -40,4 +40,9 @@ class Attendance extends Model
     {
         return $this->hasMany(Payment::class, 'attendance_id');    
     }
+
+    public function cancelAttendance()  
+    {
+        return $this->hasMany(CancelAttendance::class);    
+    }
 }
