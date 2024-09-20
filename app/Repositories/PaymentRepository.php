@@ -19,7 +19,7 @@ class PaymentRepository
         {
             $payment = $attendance->payment()->create([
                 'event_id' => $attendance->event->id,
-                'transaction_code' => data_get($attributes, 'transaction_code'),
+                'phone' => data_get($attributes, 'transacted_phone'),
                 'amount' => data_get($attributes, 'amount'),
                 'paid' => data_get($attributes, 'paid'),
                 'payment_status' => EventPaymentStatus::PENDING,
@@ -33,8 +33,8 @@ class PaymentRepository
 
     public function confirmAndUpdatePayments(array $attributes, Attendance $attendance)  
     {
-        $transactionCode = data_get($attributes, 'transaction_code');
-        $payment = Payment::where('transaction_code', $transactionCode)->first();
+        $transactionPhone = data_get($attributes, 'phone');
+        $payment = Payment::findPaymentsByPaid($transactionPhone);
         if($payment)
         {
             $paid_amount = data_get($attributes, 'paid');
@@ -61,13 +61,5 @@ class PaymentRepository
             return $payment;
         }
         return false;
-
-        // if($payment->transaction_code == $transactionCode)
-        // {
-
-        // }else
-        // {
-
-        // }
     }
 }

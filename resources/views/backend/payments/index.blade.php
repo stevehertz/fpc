@@ -19,7 +19,7 @@
                                         <th style="width: 10px">SN</th>
                                         <th>Event Name</th>
                                         <th>Full Names</th>
-                                        <th>Transaction Code</th>
+                                        <th>Phone Used To pay</th>
                                         <th>Amount Paid</th>
                                         <th>Status</th>
                                         <th></th>
@@ -41,7 +41,7 @@
                                                 {{ $payment->attendance->last_name }}
                                             </td>
                                             <td>
-                                                {{ $payment->transaction_code }}
+                                                {{ $payment->phone }}
                                             </td>
                                             <td>
                                                 {{ $payment->amount }}

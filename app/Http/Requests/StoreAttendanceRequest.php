@@ -31,7 +31,7 @@ class StoreAttendanceRequest extends FormRequest
             'organization' => ['required', 'string', 'max:255'],
             'position' => ['required', 'string', 'max:255'],
             'user_type' => ['required', 'integer'],
-            'transaction_code' => ['required']
+            'transacted_phone' => ['required']
         ];
     }
 }

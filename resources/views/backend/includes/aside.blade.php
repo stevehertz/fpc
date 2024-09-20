@@ -125,14 +125,15 @@
                     </a>
                 </li>
                 
-                <li class="nav-header">EXAMPLES</li>
+                <li class="nav-header">
+                    @lang('sidebar.headers.users')
+                </li>
 
                 <li class="nav-item">
                     <a href="pages/calendar.html" class="nav-link">
-                        <i class="nav-icon fas fa-calendar-alt"></i>
+                        <i class="nav-icon fas fa-users"></i>
                         <p>
-                            Calendar
-                            <span class="badge badge-info right">2</span>
+                            @lang('sidebar.users')
                         </p>
                     </a>
                 </li>

@@ -101,9 +101,9 @@
                             </div>
                             <div class="col-12 col-md-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" name="transaction_code" id="transaction_code"
-                                        placeholder="Transaction Code" required>
-                                    <label for="transaction_code">Transaction Code</label>
+                                    <input type="text" class="form-control" name="transacted_phone" id="transactionPhone"
+                                        placeholder="Enter Phone Number Used To Pay" required autofocus>
+                                    <label for="transactionPhone">Phone Number Used To Pay</label>
                                 </div>
                             </div>
                             <div class="col-12">

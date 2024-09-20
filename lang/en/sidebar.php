@@ -10,5 +10,9 @@ return [
     'attendance' => 'Attendance',
     'payments' => 'Payments',
     'terms-and-conditions' => 'Terms and Conditions',
-    'analytics' => 'Analytics'
+    'analytics' => 'Analytics', 
+    'users' => 'Users',
+    'headers' => [
+        'users' => 'User Management'
+    ]
 ];

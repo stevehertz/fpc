@@ -23,7 +23,7 @@ class ConfirmExhibitionRequest extends FormRequest
     {
         return [
             //
-            'transaction_code' => ['required'],
+            'phone' => ['required'],
             'paid' => ['required', 'numeric']
         ];
     }

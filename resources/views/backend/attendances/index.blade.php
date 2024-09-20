@@ -300,24 +300,24 @@
                             <form id="attendanceConfirmationForm">
                                 <label for="amount">Paid Amount:</label>
                                 <input type="number" id="amount" name="paid" class="swal2-input" placeholder="Enter Paid amount">
-                                <label for="transactionCode">Transaction Code:</label>
-                                <input type="text" id="transactionCode" name="transaction_code" class="swal2-input" placeholder="Enter transaction code">
+                                <label for="phone">Transaction Code:</label>
+                                <input type="text" id="phone" name="phone" class="swal2-input" placeholder="Enter phone number used to pay">
                             </form>`,
                             confirmButtonText: 'Submit',
                             preConfirm: () => {
                                 // Collect data from the form
                                 const amount = Swal.getPopup().querySelector('#amount')
                                     .value;
-                                const transactionCode = Swal.getPopup().querySelector(
-                                    '#transactionCode').value;
-                                if (!amount || !transactionCode) {
+                                const phone = Swal.getPopup().querySelector(
+                                    '#phone').value;
+                                if (!amount || !phone) {
                                     Swal.showValidationMessage(
                                         'Please enter both amount and transaction code'
                                     );
                                 }
                                 return {
                                     amount,
-                                    transactionCode
+                                    phone
                                 };
                             }
                         }).then((formResult) => {
@@ -326,12 +326,12 @@
 
                                 const data = {
                                     paid: formResult.value.amount,
-                                    transaction_code: formResult.value.transactionCode,
+                                    phone: formResult.value.phone,
                                     _token: '{{ csrf_token() }}' // Include CSRF token for security
                                 };
 
                                 let path =
-                                    '{{ route('backend.attendance.confirm.exhibitor', ':attendance') }}';
+                                    '{{ route('backend.attendance.confirm.exhibitor.attendance', ':attendance') }}';
                                 path = path.replace(':attendance', attendance_id);
                                 $.ajax({
                                     type: "POST",
@@ -344,6 +344,8 @@
                                             setTimeout(() => {
                                                 location.reload();
                                             }, 1000);
+                                        }else{
+                                            toastr.error(data['message']);
                                         }
                                     },
                                     error: function(data) {

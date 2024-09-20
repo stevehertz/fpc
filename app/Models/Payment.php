@@ -14,7 +14,7 @@ class Payment extends Model
     protected $fillable = [
         'event_id',
         'attendance_id',
-        'transaction_code',
+        'phone',
         'amount',
         'paid',
         'payment_status',
@@ -35,5 +35,10 @@ class Payment extends Model
     public function attendance()  
     {
         return $this->belongsTo(Attendance::class, 'attendance_id');    
+    }
+
+    public static function findPaymentsByPaid($phone)  
+    {
+        return self::where('phone', $phone)->first();    
     }
 }
