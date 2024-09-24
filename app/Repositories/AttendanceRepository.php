@@ -21,37 +21,83 @@ class AttendanceRepository
         return Attendance::with(['event', 'payment'])->latest()->get();
     }
 
-    public function getAttendanceForAnEvent(array  $attributes)
+    public function getAttendanceForAnEvent(array  $attributes, $confirmationStatus =  EventAttendanceConfirmationStatus::PENDING)
     {
         return Attendance::where('event_id', data_get($attributes, 'event_id'))
+            ->where('confirmation_status', $confirmationStatus)
             ->with(['event', 'payment'])
             ->latest()->get();
     }
 
-    public function getAttendanceForAUserType(array  $attributes)
+    public function getRegisteredAttendanceForAUserType(array  $attributes, $confirmationStatus =  EventAttendanceConfirmationStatus::PENDING)
     {
         return Attendance::where('user_type', data_get($attributes, 'user_type'))
+            ->where('confirmation_status', $confirmationStatus)
             ->with(['event', 'payment'])
             ->latest()->get();
     }
 
-    public function getAttendanceForAnEventandUserType(array  $attributes)
+    public function getConfirmedAttendanceForAUserType(array  $attributes, $confirmationStatus =  EventAttendanceConfirmationStatus::CONFIRMED)
+    {
+        return Attendance::where('user_type', data_get($attributes, 'user_type'))
+            ->where('confirmation_status', $confirmationStatus)
+            ->with(['event', 'payment'])
+            ->latest()->get();
+    }
+
+    public function getRegisteredAttendanceForAnEventandUserType(array  $attributes, $confirmationStatus =  EventAttendanceConfirmationStatus::PENDING)
     {
         return Attendance::where('event_id', data_get($attributes, 'event_id'))
             ->where('user_type', data_get($attributes, 'user_type'))
+            ->where('confirmation_status', $confirmationStatus)
             ->with(['event', 'payment'])
             ->latest()->get();
     }
+
+    public function getConfimedAttendanceForAnEventandUserType(array  $attributes, $confirmationStatus =  EventAttendanceConfirmationStatus::CONFIRMED)
+    {
+        return Attendance::where('event_id', data_get($attributes, 'event_id'))
+            ->where('user_type', data_get($attributes, 'user_type'))
+            ->where('confirmation_status', $confirmationStatus)
+            ->with(['event', 'payment'])
+            ->latest()->get();
+    }
+
 
     public function getAllDelegates($userType = ExhibitionRegisterAs::DELEGATE)
     {
         return Attendance::where('user_type', $userType)->get();
     }
 
-    public function getDelegatesForAnEvent(array  $attributes, $userType = ExhibitionRegisterAs::DELEGATE)
+    public function getAllRegisteredDelegates($userType = ExhibitionRegisterAs::DELEGATE, $confirmationStatus =  EventAttendanceConfirmationStatus::PENDING)
+    {
+        return Attendance::where('user_type', $userType)
+            ->where('confirmation_status', $confirmationStatus)
+            ->get();
+    }
+
+    public function getAllConfirmedDelegates($userType = ExhibitionRegisterAs::DELEGATE, $confirmationStatus =  EventAttendanceConfirmationStatus::CONFIRMED)
+    {
+        return Attendance::where('user_type', $userType)
+            ->where('confirmation_status', $confirmationStatus)
+            ->get();
+    }
+
+    public function getRegisteredDelegatesForAnEvent(array  $attributes, $userType = ExhibitionRegisterAs::DELEGATE, $confirmationStatus =  EventAttendanceConfirmationStatus::PENDING)
     {
         return Attendance::where('event_id', data_get($attributes, 'event_id'))
             ->where('user_type', $userType)
+            ->where('confirmation_status', $confirmationStatus)
+            ->latest()
+            ->get();
+    }
+
+    public function getConfirmedDelegatesForAnEvent(array  $attributes, $userType = ExhibitionRegisterAs::DELEGATE, $confirmationStatus =  EventAttendanceConfirmationStatus::CONFIRMED)
+    {
+        return Attendance::where('event_id', data_get($attributes, 'event_id'))
+            ->where('user_type', $userType)
+            ->where('confirmation_status', $confirmationStatus)
+            ->latest()
             ->get();
     }
 
@@ -60,11 +106,55 @@ class AttendanceRepository
         return Attendance::where('user_type', $userType)->get();
     }
 
-    public function getExhibitorsForAnEvent(array  $attributes, $userType = ExhibitionRegisterAs::EXHIBITOR)
+    public function getAllRegisteredExhibitors($userType = ExhibitionRegisterAs::EXHIBITOR, $confirmationStatus =  EventAttendanceConfirmationStatus::PENDING)
+    {
+        return Attendance::where('user_type', $userType)
+            ->where('confirmation_status', $confirmationStatus)
+            ->latest()
+            ->get();
+    }
+
+    public function getAllConfirmedExhibitors($userType = ExhibitionRegisterAs::EXHIBITOR, $confirmationStatus =  EventAttendanceConfirmationStatus::CONFIRMED)  
+    {
+        return Attendance::where('user_type', $userType)
+            ->where('confirmation_status', $confirmationStatus)
+            ->latest()
+            ->get();
+    }
+
+    public function getExhibitorsForAnEvent(array  $attributes, $userType = ExhibitionRegisterAs::EXHIBITOR, $confirmationStatus =  EventAttendanceConfirmationStatus::PENDING)
     {
         return Attendance::where('event_id', data_get($attributes, 'event_id'))
             ->where('user_type', $userType)
+            ->where('confirmation_status', $confirmationStatus)
             ->get();
+    }
+
+    public function getConfirmedExhibitorsForAnEvent(array  $attributes, $userType = ExhibitionRegisterAs::EXHIBITOR, $confirmationStatus =  EventAttendanceConfirmationStatus::CONFIRMED)
+    {
+        return Attendance::where('event_id', data_get($attributes, 'event_id'))
+            ->where('user_type', $userType)
+            ->where('confirmation_status', $confirmationStatus)
+            ->get();
+    }
+
+    public function getAllRegisteredAttendances($confirmationStatus =  EventAttendanceConfirmationStatus::PENDING)
+    {
+        return Attendance::where('confirmation_status', $confirmationStatus)->latest()->get();
+    }
+
+    public function getAllConfirmedAttendancesForAnEvent(array  $attributes, $confirmationStatus =  EventAttendanceConfirmationStatus::CONFIRMED)
+    {
+        return Attendance::where('confirmation_status', $confirmationStatus)
+            ->where('event_id', data_get($attributes, 'event_id'))
+            ->latest()
+            ->get();
+    }
+
+
+    public function getAllConfirmedAttendances($confirmationStatus =  EventAttendanceConfirmationStatus::CONFIRMED)
+    {
+        return Attendance::where('confirmation_status', $confirmationStatus)->latest()->get();
     }
 
 
@@ -129,7 +219,6 @@ class AttendanceRepository
                 ]);
 
                 return $attendance;
-
             } catch (\Exception $e) {
                 // Handle exception (log error or return a specific message)
                 Log::error('Error generating or storing QR code: ' . $e->getMessage());
@@ -139,7 +228,7 @@ class AttendanceRepository
         return false;
     }
 
-    public function cancelAttendance(array $attributes, Attendance $attendance)  
+    public function cancelAttendance(array $attributes, Attendance $attendance)
     {
         // Cancel attendance logic here
         $attendance->update([
@@ -159,8 +248,7 @@ class AttendanceRepository
         $attendance = Attendance::findOrFail($id);
         if ($attendance) {
             $today = Carbon::now();
-            if($attendance->confirmation_status == EventAttendanceConfirmationStatus::CONFIRMED)
-            {
+            if ($attendance->confirmation_status == EventAttendanceConfirmationStatus::CONFIRMED) {
                 $attendance->update([
                     'confirmation_status' => EventAttendanceConfirmationStatus::CONFIRMED,
                     'attendance_pass_status' => AttendancePassStatus::ISSUED,

@@ -7,45 +7,6 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 col-sm-4">
-                    <div class="info-box bg-light">
-                        <div class="info-box-content">
-                            <span class="info-box-text text-center text-muted">
-                                Total Registered
-                            </span>
-                            <span class="info-box-number text-center text-muted mb-0">
-                                {{ count($data) }}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-4">
-                    <div class="info-box bg-light">
-                        <div class="info-box-content">
-                            <span class="info-box-text text-center text-muted">
-                                Delegates Registered
-                            </span>
-                            <span class="info-box-number text-center text-muted mb-0">
-                                {{ count($delegates) }}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-4">
-                    <div class="info-box bg-light">
-                        <div class="info-box-content">
-                            <span class="info-box-text text-center text-muted">
-                                Exhibitors Registered
-                            </span>
-                            <span class="info-box-number text-center text-muted mb-0">
-                                {{ count($exhibitors) }}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="row">
                 <div class="col-12 col-md-12">
                     <div class="card">
                         <div class="card-body">
@@ -122,78 +83,243 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
+                    <!-- Custom Tabs -->
                     <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Attendances</h3>
-                        </div>
-                        <div class="card-body table-responsive">
-                            <table id="data" class="table table-bordered table-striped table-sm">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 10px">SN</th>
-                                        <th>Full Names</th>
-                                        <th>Event Name</th>
-                                        <th>Phone Number</th>
-                                        <th>Email Address</th>
-                                        <th>Organization</th>
-                                        <th>Position</th>
-                                        <th>Registered As</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($data as $attendance)
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>
-                                                {{ $attendance->first_name }} {{ $attendance->last_name }}
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('backend.events.view', $attendance->event->id) }}">
-                                                    {{ $attendance->event->name }}
-                                                </a>
-                                            </td>
-                                            <td>{{ $attendance->phone }}</td>
-                                            <td>{{ $attendance->email }}</td>
-                                            <td>{{ $attendance->organization }}</td>
-                                            <td>
-                                                @if ($attendance->user_type == \ExhibitionRegisterAs::DELEGATE)
-                                                    {{ \DelegatesPosition::getName($attendance->position) }}
-                                                @else
-                                                    {{ $attendance->position }}
-                                                @endif
-                                            </td>
-                                            <td>
-                                                {{ \ExhibitionRegisterAs::getName($attendance->user_type) }}
-                                            </td>
-                                            <td>
-                                                @if ($attendance->confirmation_status == \EventAttendanceConfirmationStatus::CONFIRMED)
-                                                    <span class="badge badge-success">
-                                                        {{ \EventAttendanceConfirmationStatus::getName(\EventAttendanceConfirmationStatus::CONFIRMED) }}
+                        <div class="card-header d-flex p-0">
+                            <h3 class="card-title p-3">Tabs</h3>
+                            <ul class="nav nav-pills ml-auto p-2">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#tab_1" data-toggle="tab">
+                                        Registered
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#tab_2" data-toggle="tab">
+                                        Confirmed
+                                    </a>
+                                </li>
+                            </ul>
+                        </div><!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_1">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-4">
+                                            <div class="info-box bg-light">
+                                                <div class="info-box-content">
+                                                    <span class="info-box-text text-center text-muted">
+                                                        Total Registered
                                                     </span>
-                                                @else
-                                                    @if ($attendance->user_type == \ExhibitionRegisterAs::DELEGATE)
-                                                        <a href="javascript:void(0)" data-id="{{ $attendance->id }}"
-                                                            class="btn btn-sm btn-success confirmAttendanceBtn">
-                                                            CONFIRM
-                                                        </a>
-                                                    @else
-                                                        <a href="javascript:void(0)" data-id="{{ $attendance->id }}"
-                                                            class="btn btn-sm btn-success confirmExhibitorsAttendanceBtn">
-                                                            CONFIRM
-                                                        </a>
-                                                    @endif
-                                                @endif
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
+                                                    <span class="info-box-number text-center text-muted mb-0">
+                                                        {{ count($data) }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-4">
+                                            <div class="info-box bg-light">
+                                                <div class="info-box-content">
+                                                    <span class="info-box-text text-center text-muted">
+                                                        Delegates Registered
+                                                    </span>
+                                                    <span class="info-box-number text-center text-muted mb-0">
+                                                        {{ count($registeredDelegates) }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-4">
+                                            <div class="info-box bg-light">
+                                                <div class="info-box-content">
+                                                    <span class="info-box-text text-center text-muted">
+                                                        Exhibitors Registered
+                                                    </span>
+                                                    <span class="info-box-number text-center text-muted mb-0">
+                                                        {{ count($registeredExhibitors) }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="table-responsive">
+                                                <table id="data" class="table table-bordered table-striped table-sm">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="width: 10px">SN</th>
+                                                            <th>Full Names</th>
+                                                            <th>Event Name</th>
+                                                            <th>Phone Number</th>
+                                                            <th>Email Address</th>
+                                                            <th>Organization</th>
+                                                            <th>Position</th>
+                                                            <th>Registered As</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($data as $attendance)
+                                                            <tr>
+                                                                <td>{{ $loop->iteration }}</td>
+                                                                <td>
+                                                                    {{ $attendance->first_name }}
+                                                                    {{ $attendance->last_name }}
+                                                                </td>
+                                                                <td>
+                                                                    <a
+                                                                        href="{{ route('backend.events.view', $attendance->event->id) }}">
+                                                                        {{ $attendance->event->name }}
+                                                                    </a>
+                                                                </td>
+                                                                <td>{{ $attendance->phone }}</td>
+                                                                <td>{{ $attendance->email }}</td>
+                                                                <td>{{ $attendance->organization }}</td>
+                                                                <td>
+                                                                    @if ($attendance->user_type == \ExhibitionRegisterAs::DELEGATE)
+                                                                        {{ \DelegatesPosition::getName($attendance->position) }}
+                                                                    @else
+                                                                        {{ $attendance->position }}
+                                                                    @endif
+                                                                </td>
+                                                                <td>
+                                                                    {{ \ExhibitionRegisterAs::getName($attendance->user_type) }}
+                                                                </td>
+                                                                <td>
+                                                                    @if ($attendance->confirmation_status == \EventAttendanceConfirmationStatus::CONFIRMED)
+                                                                        <span class="badge badge-success">
+                                                                            {{ \EventAttendanceConfirmationStatus::getName(\EventAttendanceConfirmationStatus::CONFIRMED) }}
+                                                                        </span>
+                                                                    @else
+                                                                        @if ($attendance->user_type == \ExhibitionRegisterAs::DELEGATE)
+                                                                            <a href="javascript:void(0)"
+                                                                                data-id="{{ $attendance->id }}"
+                                                                                class="btn btn-sm btn-success confirmAttendanceBtn">
+                                                                                CONFIRM
+                                                                            </a>
+                                                                        @else
+                                                                            <a href="javascript:void(0)"
+                                                                                data-id="{{ $attendance->id }}"
+                                                                                class="btn btn-sm btn-success confirmExhibitorsAttendanceBtn">
+                                                                                CONFIRM
+                                                                            </a>
+                                                                        @endif
+                                                                    @endif
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /.tab-pane -->
+                                <div class="tab-pane" id="tab_2">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-4">
+                                            <div class="info-box bg-light">
+                                                <div class="info-box-content">
+                                                    <span class="info-box-text text-center text-muted">
+                                                        Total Confirmed
+                                                    </span>
+                                                    <span class="info-box-number text-center text-muted mb-0">
+                                                        {{ count($confirmed) }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-4">
+                                            <div class="info-box bg-light">
+                                                <div class="info-box-content">
+                                                    <span class="info-box-text text-center text-muted">
+                                                        Delegates Confirmed
+                                                    </span>
+                                                    <span class="info-box-number text-center text-muted mb-0">
+                                                        {{ count($confirmedDelegates) }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-4">
+                                            <div class="info-box bg-light">
+                                                <div class="info-box-content">
+                                                    <span class="info-box-text text-center text-muted">
+                                                        Exhibitors Confirmed
+                                                    </span>
+                                                    <span class="info-box-number text-center text-muted mb-0">
+                                                        {{ count($confirmedExhibitors) }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <table id="confirmedData" class="table table-bordered table-striped table-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 10px">SN</th>
+                                                        <th>Full Names</th>
+                                                        <th>Event Name</th>
+                                                        <th>Phone Number</th>
+                                                        <th>Email Address</th>
+                                                        <th>Organization</th>
+                                                        <th>Position</th>
+                                                        <th>Registered As</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($confirmed as $confirmedAttendance)
+                                                        <tr>
+                                                            <td>{{ $loop->iteration }}</td>
+                                                            <td>
+                                                                {{ $confirmedAttendance->first_name }}
+                                                                {{ $confirmedAttendance->last_name }}
+                                                            </td>
+                                                            <td>
+                                                                <a
+                                                                    href="{{ route('backend.events.view', $confirmedAttendance->event->id) }}">
+                                                                    {{ $confirmedAttendance->event->name }}
+                                                                </a>
+                                                            </td>
+                                                            <td>{{ $confirmedAttendance->phone }}</td>
+                                                            <td>{{ $confirmedAttendance->email }}</td>
+                                                            <td>{{ $confirmedAttendance->organization }}</td>
+                                                            <td>
+                                                                @if ($confirmedAttendance->user_type == \ExhibitionRegisterAs::DELEGATE)
+                                                                    {{ \DelegatesPosition::getName($confirmedAttendance->position) }}
+                                                                @else
+                                                                    {{ $confirmedAttendance->position }}
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                {{ \ExhibitionRegisterAs::getName($confirmedAttendance->user_type) }}
+                                                            </td>
+                                                            <td>
+                                                                @if ($confirmedAttendance->confirmation_status == \EventAttendanceConfirmationStatus::CONFIRMED)
+                                                                    <span class="badge badge-success">
+                                                                        {{ \EventAttendanceConfirmationStatus::getName(\EventAttendanceConfirmationStatus::CONFIRMED) }}
+                                                                    </span>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.tab-pane -->
+                            </div>
+                            <!-- /.tab-content -->
+                        </div><!-- /.card-body -->
                     </div>
-                    <!-- /.card -->
+                    <!-- ./card -->
                 </div>
+                <!--/.col -->
             </div>
             <!--/.row -->
         </div>
@@ -350,7 +476,7 @@
                                             setTimeout(() => {
                                                 location.reload();
                                             }, 1000);
-                                        }else{
+                                        } else {
                                             toastr.error(data['message']);
                                         }
                                     },

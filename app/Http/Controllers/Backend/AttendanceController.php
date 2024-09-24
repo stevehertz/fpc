@@ -43,33 +43,51 @@ class AttendanceController extends Controller
             $filter_data = $request->except('_token');
             if (!empty($filter_data['event_id']) && empty($filter_data['user_type'])) {
                 $data = $this->attendanceRepository->getAttendanceForAnEvent($filter_data);
-                $delegates = $this->attendanceRepository->getDelegatesForAnEvent($filter_data);
-                $exhibitors = $this->attendanceRepository->getExhibitorsForAnEvent($filter_data);
+                $registeredDelegates = $this->attendanceRepository->getRegisteredDelegatesForAnEvent($filter_data);
+                $registeredExhibitors = $this->attendanceRepository->getExhibitorsForAnEvent($filter_data);
+                $confirmed = $this->attendanceRepository->getAllConfirmedAttendancesForAnEvent($filter_data);
+                $confirmedDelegates = $this->attendanceRepository->getConfirmedDelegatesForAnEvent($filter_data);
+                $confirmedExhibitors = $this->attendanceRepository->getConfirmedExhibitorsForAnEvent($filter_data);
             } else if (empty($filter_data['event_id']) && !empty($filter_data['user_type'])) {
-                $data = $this->attendanceRepository->getAttendanceForAUserType($filter_data);
-                $delegates = $this->attendanceRepository->getAllDelegates();
-                $exhibitors = $this->attendanceRepository->getAllExhibitors();
+                $data = $this->attendanceRepository->getRegisteredAttendanceForAUserType($filter_data);
+                $registeredDelegates = $this->attendanceRepository->getAllRegisteredDelegates();
+                $registeredExhibitors = $this->attendanceRepository->getAllRegisteredExhibitors();
+                $confirmed = $this->attendanceRepository->getConfirmedAttendanceForAUserType($filter_data);
+                $confirmedDelegates = $this->attendanceRepository->getAllConfirmedDelegates($filter_data);
+                $confirmedExhibitors = $this->attendanceRepository->getAllConfirmedExhibitors($filter_data);
             } else if (!empty($filter_data['event_id']) && !empty($filter_data['user_type'])) {
-                $data = $this->attendanceRepository->getAttendanceForAnEventandUserType($filter_data);
-                $delegates = $this->attendanceRepository->getDelegatesForAnEvent($filter_data);
-                $exhibitors = $this->attendanceRepository->getExhibitorsForAnEvent($filter_data);
+                $data = $this->attendanceRepository->getRegisteredAttendanceForAnEventandUserType($filter_data);
+                $registeredDelegates = $this->attendanceRepository->getRegisteredDelegatesForAnEvent($filter_data);
+                $registeredExhibitors = $this->attendanceRepository->getExhibitorsForAnEvent($filter_data);
+                $confirmed = $this->attendanceRepository->getConfimedAttendanceForAnEventandUserType($filter_data);
+                $confirmedDelegates = $this->attendanceRepository->getConfirmedExhibitorsForAnEvent($filter_data);
+                $confirmedExhibitors = $this->attendanceRepository->getConfirmedExhibitorsForAnEvent($filter_data);
             } else {
-                $data = $this->attendanceRepository->getAllAttendances();
-                $delegates = $this->attendanceRepository->getAllDelegates();
-                $exhibitors = $this->attendanceRepository->getAllExhibitors();
+                $data = $this->attendanceRepository->getAllRegisteredAttendances();
+                $registeredDelegates = $this->attendanceRepository->getAllRegisteredDelegates();
+                $registeredExhibitors = $this->attendanceRepository->getAllRegisteredExhibitors();
+                $confirmed = $this->attendanceRepository->getAllConfirmedAttendances();
+                $confirmedDelegates = $this->attendanceRepository->getAllConfirmedDelegates();
+                $confirmedExhibitors = $this->attendanceRepository->getAllConfirmedExhibitors();   
             }
         } else {
-            $data = $this->attendanceRepository->getAllAttendances();
-            $delegates = $this->attendanceRepository->getAllDelegates();
-            $exhibitors = $this->attendanceRepository->getAllExhibitors();
+            $data = $this->attendanceRepository->getAllRegisteredAttendances();
+            $registeredDelegates = $this->attendanceRepository->getAllRegisteredDelegates();
+            $registeredExhibitors = $this->attendanceRepository->getAllRegisteredExhibitors();
+            $confirmed = $this->attendanceRepository->getAllConfirmedAttendances();
+            $confirmedDelegates = $this->attendanceRepository->getAllConfirmedDelegates();
+            $confirmedExhibitors = $this->attendanceRepository->getAllConfirmedExhibitors(); 
         }
         $events = $this->eventRepositories->getAllEvents();
         return view('backend.attendances.index', [
             'data' => $data,
+            'confirmed' => $confirmed,
             'filter_data' => $filter_data,
             'events' => $events,
-            'delegates' => $delegates,
-            'exhibitors' => $exhibitors
+            'registeredDelegates' => $registeredDelegates,
+            'registeredExhibitors' => $registeredExhibitors,
+            'confirmedDelegates' => $confirmedDelegates,
+            'confirmedExhibitors' => $confirmedExhibitors,
         ]);
     }
 
@@ -165,8 +183,8 @@ class AttendanceController extends Controller
                 'reasons' => $cancelAttendance->reasons
             ];
 
-            // $attendanceEmail = $attendance->email;
-            $attendanceEmail = 'stevekamahertz@gmail.com';
+            $attendanceEmail = $attendance->email;
+            // $attendanceEmail = 'stevekamahertz@gmail.com';
 
             Mail::to($attendanceEmail)->send(new AttendanceCancelMail($attendance, $data));
 
