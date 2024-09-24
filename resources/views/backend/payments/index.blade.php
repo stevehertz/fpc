@@ -3,8 +3,8 @@
 @section('content')
     @include('backend.includes.bread-crumbs')
 
-      <!-- Main content -->
-      <section class="content">
+    <!-- Main content -->
+    <section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -32,12 +32,12 @@
                                                 {{ $loop->iteration }}
                                             </td>
                                             <td>
-                                                <a href="#}">
+                                                <a href="{{ route('backend.events.view', $payment->event->id) }}">
                                                     {{ $payment->event->name }}
                                                 </a>
                                             </td>
                                             <td>
-                                                {{ $payment->attendance->first_name }} 
+                                                {{ $payment->attendance->first_name }}
                                                 {{ $payment->attendance->last_name }}
                                             </td>
                                             <td>
@@ -47,10 +47,10 @@
                                                 {{ $payment->amount }}
                                             </td>
                                             <td>
-                                                {{ \EventPaymentStatus::getName($payment->payment_status)  }}
+                                                {{ \EventPaymentStatus::getName($payment->payment_status) }}
                                             </td>
                                             <td class="col-md-1">
-                                                
+
                                             </td>
                                         </tr>
                                     @endforeach
@@ -67,13 +67,12 @@
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-
 @endsection
 
 @push('scripts')
     <script>
         $(document).ready(function() {
-
+            
         });
     </script>
 @endpush

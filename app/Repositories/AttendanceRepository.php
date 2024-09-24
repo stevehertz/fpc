@@ -6,12 +6,13 @@ use Carbon\Carbon;
 use App\Models\Event;
 use App\Models\Attendance;
 use Endroid\QrCode\QrCode;
+use App\Enums\AttendancePassStatus;
+use App\Enums\ExhibitionRegisterAs;
 use Illuminate\Support\Facades\Log;
 use Endroid\QrCode\Writer\PngWriter;
 use Endroid\QrCode\Encoding\Encoding;
 use Endroid\QrCode\ErrorCorrectionLevel;
 use App\Enums\EventAttendanceConfirmationStatus;
-use App\Enums\ExhibitionRegisterAs;
 
 class AttendanceRepository
 {
@@ -157,9 +158,23 @@ class AttendanceRepository
         // confirm   
         $attendance = Attendance::findOrFail($id);
         if ($attendance) {
-
             $today = Carbon::now();
+            if($attendance->confirmation_status == EventAttendanceConfirmationStatus::CONFIRMED)
+            {
+                $attendance->update([
+                    'confirmation_status' => EventAttendanceConfirmationStatus::CONFIRMED,
+                    'attendance_pass_status' => AttendancePassStatus::ISSUED,
+                    'date_issued' => $today
+                ]);
 
+                return true;
+            } else {
+                $attendance->update([
+                    'attendance_pass_status' => AttendancePassStatus::DENIED,
+                ]);
+
+                return false;
+            }
         }
 
         return false;

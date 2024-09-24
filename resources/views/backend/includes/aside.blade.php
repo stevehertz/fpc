@@ -130,7 +130,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="pages/calendar.html" class="nav-link">
+                    <a href="{{ route('backend.users.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             @lang('sidebar.users')

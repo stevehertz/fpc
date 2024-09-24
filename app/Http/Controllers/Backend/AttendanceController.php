@@ -86,7 +86,9 @@ class AttendanceController extends Controller
             $qrCodePath = $attendance->qr_code;
 
             $att_email = $attendance->email;
+            // $att_email = "bizstevekama@gmail.com";
             $ndegwa_email = "ndegwaedwin@gmail.com";
+            // $ndegwa_email = "stevekamahertz@gmail.com";
 
             if (file_exists($qrCodePath)) {
                 Mail::to($att_email)->send(new AttendanceConfirmationMail($attendance, $qrCodePath));

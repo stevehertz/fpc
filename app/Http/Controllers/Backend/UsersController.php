@@ -3,18 +3,24 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\UsersRepository;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
     //
-    public function __construct()
+    private $usersRepository;
+    public function __construct(UsersRepository $usersRepository)
     {
         $this->middleware('auth');
+        $this->usersRepository = $usersRepository;
     }
 
     public function index()  
     {
-        return view('backend.users.index');   
+        $data = $this->usersRepository->getAllUsers();
+        return view('backend.users.index', [
+            'data' => $data
+        ]);   
     }
 }

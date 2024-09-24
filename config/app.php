@@ -5,6 +5,7 @@ use App\Enums\EventStatus;
 use App\Enums\EventPriority;
 use App\Enums\DelegatesPosition;
 use App\Enums\EventPaymentStatus;
+use App\Enums\AttendancePassStatus;
 use App\Enums\ExhibitionRegisterAs;
 use Spatie\Analytics\AnalyticsFacade;
 use Illuminate\Support\Facades\Facade;
@@ -222,6 +223,7 @@ return [
         'EventPaymentStatus' => EventPaymentStatus::class,
         'DelegatesPosition' => DelegatesPosition::class,
         'EventAttendanceConfirmationStatus' => EventAttendanceConfirmationStatus::class,
+        'AttendancePassStatus' => AttendancePassStatus::class,
     ])->toArray(),
 
 ];

@@ -94,8 +94,19 @@ class ExhibitionController extends Controller
         ]);
     }
 
-    public function confirm($id)  
+    public function confirm($id)
     {
-        
+        $attendance = $this->attendanceRepository->confirmQR($id);
+        if ($attendance) {
+            return response()->json([
+                'status' => true,
+                'message' => 'Attendance has been confirmed. Please issue the pass'
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Attendance has not been confirmed. Do not issue the pass'
+            ]);
+        }
     }
 }

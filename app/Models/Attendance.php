@@ -22,6 +22,8 @@ class Attendance extends Model
         'user_type',
         'confirmation_status',
         'qr_code',
+        'attendance_pass_status',
+        'date_issued',
         'created_by',
         'updated_by',
         'deleted_by'

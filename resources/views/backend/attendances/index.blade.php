@@ -145,8 +145,14 @@
                                     @foreach ($data as $attendance)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $attendance->first_name }} {{ $attendance->last_name }}</td>
-                                            <td>{{ $attendance->event->name }}</td>
+                                            <td>
+                                                {{ $attendance->first_name }} {{ $attendance->last_name }}
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('backend.events.view', $attendance->event->id) }}">
+                                                    {{ $attendance->event->name }}
+                                                </a>
+                                            </td>
                                             <td>{{ $attendance->phone }}</td>
                                             <td>{{ $attendance->email }}</td>
                                             <td>{{ $attendance->organization }}</td>
