@@ -96,4 +96,31 @@ class Helpers
 
         return $monthAndYearName = $monthName . " " . $year;
     }
+
+    public static function getFirstParagraph($content, $limit = null)
+    {
+        // Load the content into a DOMDocument to extract the first paragraph
+        $dom = new \DOMDocument();
+
+        // Suppress warnings when loading HTML (to handle malformed HTML)
+        @$dom->loadHTML($content, LIBXML_NOERROR | LIBXML_NOWARNING);
+
+        // Get all the paragraph elements
+        $paragraphs = $dom->getElementsByTagName('p');
+
+        // If there are paragraphs, get the first one
+        if ($paragraphs->length > 0) {
+            $firstParagraph = $paragraphs->item(0)->textContent;
+
+            // Truncate the paragraph if a limit is provided
+            if ($limit !== null && strlen($firstParagraph) > $limit) {
+                return substr($firstParagraph, 0, $limit) . '...';
+            }
+
+            return $firstParagraph;
+        }
+
+        // If no paragraphs are found, return null or an empty string
+        return null;
+    }
 }

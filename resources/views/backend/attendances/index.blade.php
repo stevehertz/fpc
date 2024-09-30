@@ -257,6 +257,22 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-12">
+                                            <span class="float-right">
+                                                <a href="{{ route('backend.attendance.export.all.confirmed.attendances') }}" class="btn btn-outline-success">
+                                                    Export All Confirmed
+                                                </a>
+                                                <a href="{{ route('backend.attendance.export.all.confirmed.delegates') }}" class="btn btn-outline-success">
+                                                    Export Delegates
+                                                </a>
+                                                <a href="{{ route('backend.attendance.export.all.confirmed.exhibitors') }}" class="btn btn-outline-success">
+                                                    Export Exhibitors
+                                                </a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-12">
                                             <table id="confirmedData" class="table table-bordered table-striped table-sm">
                                                 <thead>
                                                     <tr>

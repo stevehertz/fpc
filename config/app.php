@@ -201,6 +201,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Spatie\Analytics\AnalyticsServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -224,6 +225,7 @@ return [
         'DelegatesPosition' => DelegatesPosition::class,
         'EventAttendanceConfirmationStatus' => EventAttendanceConfirmationStatus::class,
         'AttendancePassStatus' => AttendancePassStatus::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
 
 ];

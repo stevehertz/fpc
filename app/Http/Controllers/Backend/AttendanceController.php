@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Enums\EventPaymentStatus;
+use App\Exports\Attendances\ConfirmedAttendanceExport;
+use App\Exports\Attendances\ConfirmedDelegatesAttendanceExport;
+use App\Exports\Attendances\ConfirmedExhibitorsAttendanceExport;
 use setasign\Fpdi\Fpdi;
 use App\Models\Attendance;
 use Illuminate\Http\Request;
@@ -68,7 +71,7 @@ class AttendanceController extends Controller
                 $registeredExhibitors = $this->attendanceRepository->getAllRegisteredExhibitors();
                 $confirmed = $this->attendanceRepository->getAllConfirmedAttendances();
                 $confirmedDelegates = $this->attendanceRepository->getAllConfirmedDelegates();
-                $confirmedExhibitors = $this->attendanceRepository->getAllConfirmedExhibitors();   
+                $confirmedExhibitors = $this->attendanceRepository->getAllConfirmedExhibitors();
             }
         } else {
             $data = $this->attendanceRepository->getAllRegisteredAttendances();
@@ -76,7 +79,7 @@ class AttendanceController extends Controller
             $registeredExhibitors = $this->attendanceRepository->getAllRegisteredExhibitors();
             $confirmed = $this->attendanceRepository->getAllConfirmedAttendances();
             $confirmedDelegates = $this->attendanceRepository->getAllConfirmedDelegates();
-            $confirmedExhibitors = $this->attendanceRepository->getAllConfirmedExhibitors(); 
+            $confirmedExhibitors = $this->attendanceRepository->getAllConfirmedExhibitors();
         }
         $events = $this->eventRepositories->getAllEvents();
         return view('backend.attendances.index', [
@@ -89,6 +92,33 @@ class AttendanceController extends Controller
             'confirmedDelegates' => $confirmedDelegates,
             'confirmedExhibitors' => $confirmedExhibitors,
         ]);
+    }
+
+    /**
+     * Export Confirmed Attendances list.
+     */
+    public function export()
+    {
+        return (new ConfirmedAttendanceExport())
+            ->download('confirmed-attendances-' . time() . '.xlsx', \Maatwebsite\Excel\Excel::XLSX);
+    }
+
+    /**
+     * Export Confirmed Attendances list.
+     */
+    public function exportDelegates()
+    {   
+        return (new ConfirmedDelegatesAttendanceExport())
+            ->download('confirmed-delegates-' . time() . '.xlsx', \Maatwebsite\Excel\Excel::XLSX);
+    }
+
+    /**
+     * Export Confirmed Attendances list.
+     */
+    public function exportExhibitors()
+    {
+        return (new ConfirmedExhibitorsAttendanceExport())
+            ->download('confirmed-exhibitors-' . time() . '.xlsx', \Maatwebsite\Excel\Excel::XLSX);
     }
 
     /**
@@ -131,8 +161,7 @@ class AttendanceController extends Controller
 
         if ($payments) {
 
-            if($payments->payment_status == EventPaymentStatus::PAID)
-            {
+            if ($payments->payment_status == EventPaymentStatus::PAID) {
                 // print qr code
                 $attendance = $this->attendanceRepository->generateAndStoreQrCode($attendance->id);
 
@@ -151,12 +180,11 @@ class AttendanceController extends Controller
                     'status' => true,
                     'message' => 'You have successfully confirmed attendance registration for ' . $attendance->first_name . ' ' . $attendance->last_name
                 ]);
-
             }
 
             /// payment was not completely cleared 
             /// exhibitor cannot attebd the event 
-        }  
+        }
 
         return response()->json([
             'status' => false,
@@ -172,12 +200,11 @@ class AttendanceController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function cancelAttendance(CancelAttendanceRequest $request, Attendance $attendance) 
+    public function cancelAttendance(CancelAttendanceRequest $request, Attendance $attendance)
     {
         $data = $request->except("_token");
         $cancelAttendance = $this->attendanceRepository->cancelAttendance($data, $attendance);
-        if($cancelAttendance)
-        {
+        if ($cancelAttendance) {
 
             $data = [
                 'reasons' => $cancelAttendance->reasons

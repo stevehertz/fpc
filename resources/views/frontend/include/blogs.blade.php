@@ -27,7 +27,7 @@
                                 </a>
                             </h3>
                             <p>
-                                {{ getFirstParagraph($post->content) }}
+                                {{ \App\Helpers\Helpers::getFirstParagraph($post->content, 15) }}
                             </p>
                             <div class="d-flex align-items-center mt-4">
                                 <p class="mb-0">

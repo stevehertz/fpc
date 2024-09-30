@@ -12,6 +12,7 @@ return [
     'terms-and-conditions' => 'Terms and Conditions',
     'analytics' => 'Analytics', 
     'users' => 'Users',
+    'invoices' => 'Invoices',
     'headers' => [
         'users' => 'User Management'
     ]

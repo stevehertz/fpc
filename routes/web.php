@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\Backend\TermsAndConditionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AgraController;
+use App\Http\Controllers\Backend\QrCodeController;
+use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\TermsAndConditionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,13 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::get('/welcome', function(){
     return redirect()->route('login');
 });
+
+Route::get('/send-qr-code', [QrCodeController::class, 'generateAndSendQrCode']);
+
+Route::get('/agra', [AgraController::class, 'index'])->name('agra');
+Route::post('/agra/store', [AgraController::class, 'store'])->name('agra.store');
+Route::get('/agra/export', [AgraController::class, 'export'])->name('agra.export');
+
 
 Route::prefix('terms/conditions')->name('terms.conditions.')->group(function(){
     Route::get('/index', [TermsAndConditionController::class, 'index'])->name('index');
