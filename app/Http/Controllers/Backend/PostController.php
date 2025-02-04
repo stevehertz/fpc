@@ -51,7 +51,6 @@ class PostController extends Controller
         } else {
             $featureImage = null;
         }
-
         $posts = $this->postsRepository->storePost($request->all(), $featureImage);
 
         if ($posts) {

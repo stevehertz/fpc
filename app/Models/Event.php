@@ -13,9 +13,9 @@ class Event extends Model
 
     protected $fillable = [
         'name',
-        'slug', 
+        'slug',
         'description',
-        'status', 
+        'status',
         'venue',
         'theme',
         'start_date',
@@ -31,19 +31,19 @@ class Event extends Model
         'deleted_at'
     ];
 
-    public function attendance()  
+    public function attendance()
     {
-        return $this->hasMany(Attendance::class);    
+        return $this->hasMany(Attendance::class);
     }
 
-    public function payment()  
+    public function payment()
     {
-        return $this->hasMany(Payment::class, 'event_id');    
+        return $this->hasMany(Payment::class, 'event_id');
     }
 
-    public function cancelAttendance()  
+    public function cancelAttendance()
     {
-        return $this->hasMany(CancelAttendance::class);    
+        return $this->hasMany(CancelAttendance::class);
     }
 
 }

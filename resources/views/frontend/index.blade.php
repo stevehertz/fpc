@@ -11,9 +11,15 @@
     @include('frontend.include.top-feature')
     <!-- Top Feature End -->
 
-    <!-- About Start -->
-    @include('frontend.include.upcoming')
-    <!-- About End -->
+    @if ($criticalEvent)
+        <!-- About Start -->
+        @include('frontend.include.upcoming')
+        <!-- About End -->
+    @else
+        <!--Events Start-->
+        @include('frontend.include.events')
+        <!--Events End-->
+    @endif
 
     <!-- Facts Start -->
     @include('frontend.include.facts')

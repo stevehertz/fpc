@@ -78,14 +78,14 @@ class EventRepositories
     public function updateEvent(Event $event, array $attributes, ?UploadedFile $image = null)  
     {
 
-        $priority = EventPriority::getName($event->priority);
-        if($priority == EventPriority::getName(EventPriority::CRITICAL))
-        {
-            $priority = $event->priority;
-        } else 
-        {
-            $priority = data_get($attributes, 'priority');
-        }
+        // $priority = EventPriority::getName($event->priority);
+        // if($priority == EventPriority::getName(EventPriority::CRITICAL))
+        // {
+        //     $priority = $event->priority;
+        // } else 
+        // {
+        //     $priority = data_get($attributes, 'priority');
+        // }
         $event->update([
             'name' => data_get($attributes, 'name'),
             'slug' => Str::slug(data_get($attributes, 'name')),
@@ -95,7 +95,7 @@ class EventRepositories
             'theme' => data_get($attributes, 'theme'),
             'start_date' => data_get($attributes, 'start_date'),
             'end_date' => data_get($attributes, 'end_date'),
-            'priority' => $priority,
+            'priority' => data_get($attributes, 'priority'),
             'image' => $event->image
         ]);
 

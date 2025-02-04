@@ -1,0 +1,30 @@
+.testimonial-carousel .owl-item img {
+    width : 100px;
+    height: 100px;
+}
+
+.testimonial-carousel .owl-nav {
+    margin-top: 30px;
+    display   : flex;
+}
+
+.testimonial-carousel .owl-nav .owl-prev,
+.testimonial-carousel .owl-nav .owl-next {
+    margin-right   : 15px;
+    width          : 45px;
+    height         : 45px;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    color          : var(--primary);
+    background     : var(--light);
+    border-radius  : 4px;
+    font-size      : 22px;
+    transition     : .5s;
+}
+
+.testimonial-carousel .owl-nav .owl-prev:hover,
+.testimonial-carousel .owl-nav .owl-next:hover {
+    background: var(--primary);
+    color     : var(--light);
+}

@@ -16,22 +16,22 @@ class PagesController extends Controller
 
     public function __construct(PostsRepository $postsRepository, SliderRepository $sliderRepository, EventRepositories $eventRepositories)
     {
-        $this->postsRepository = $postsRepository;   
+        $this->postsRepository = $postsRepository;
         $this->sliderRepository = $sliderRepository;
         $this->eventRepositories = $eventRepositories;
     }
 
-    public function index() 
+    public function index()
     {
         $sliders = $this->sliderRepository->getSliderFront();
         $criticalEventData = $this->eventRepositories->showUpcomingCriticalEvent();
         return view('frontend.index', [
             'sliders' => $sliders,
             'criticalEvent' => $criticalEventData
-        ]);    
+        ]);
     }
 
-    public function viewSlider($slug)  
+    public function viewSlider($slug)
     {
         $data = $this->sliderRepository->showSliderBySlug($slug);
         $relatedPosts = Post::limit(7)->get();
@@ -41,17 +41,17 @@ class PagesController extends Controller
         ]);
     }
 
-    public function about()  
+    public function about()
     {
-        return view('frontend.pages.about');    
+        return view('frontend.pages.about');
     }
 
-    public function services()  
+    public function services()
     {
-        return view('frontend.pages.services');    
+        return view('frontend.pages.services');
     }
-    
-    public function blog()  
+
+    public function blog()
     {
         $posts = Post::latest()->paginate(6);
         return view('frontend.pages.blog', [
@@ -59,7 +59,7 @@ class PagesController extends Controller
         ]);
     }
 
-    public function blogDetails($slug)  
+    public function blogDetails($slug)
     {
         $post = $this->postsRepository->showPostBySlug($slug);
         $relatedPosts = Post::where('slug', '!=', $post->slug)->limit(6)->get();
@@ -76,17 +76,17 @@ class PagesController extends Controller
         ]);
     }
 
-    public function faqs()  
+    public function faqs()
     {
-        return view('frontend.pages.faqs');    
+        return view('frontend.pages.faqs');
     }
 
-    public function contact()  
+    public function contact()
     {
         return view('frontend.pages.contact');
     }
 
-    public function becomeMember()  
+    public function becomeMember()
     {
         $filePath = public_path('membership/FPC-Kenya-Registration-Form-2020.docx');
 
@@ -100,13 +100,13 @@ class PagesController extends Controller
 
     }
 
-    public function terms_and_conditions()  
+    public function terms_and_conditions()
     {
-        return view('frontend.pages.terms-and-conditions');    
+        return view('frontend.pages.terms-and-conditions');
     }
 
-    public function who_we_are()  
+    public function who_we_are()
     {
-        return view('frontend.pages.who-we-are');    
+        return view('frontend.pages.who-we-are');
     }
 }

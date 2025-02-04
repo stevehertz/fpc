@@ -1,0 +1,38 @@
+.form-step {
+    visibility: hidden;
+    position  : absolute;
+    left      : 0;
+    top       : 0;
+    width     : 100%;
+
+    &.active {
+        visibility: visible;
+        position  : relative;
+    }
+
+    .form-group {
+        .select2-container--default {
+            .select2-selection--single {
+                padding      : 1.5rem !important;
+                height       : auto;
+                display      : flex;
+                align-items  : center;
+                padding-right: 2.5rem;
+
+                .select2-selection__arrow {
+                    top      : 50%;
+                    transform: translateY(-50%);
+                    right    : 1rem;
+                    width    : 1rem;
+                    height   : 1rem;
+                }
+            }
+
+            .select2-results__option {
+                padding: 1.5rem !important;
+            }
+        }
+
+    }
+
+}

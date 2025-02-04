@@ -25,7 +25,7 @@ class StoreEventRequest extends FormRequest
             //
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
-            'image' => ['required', 'mimes:png,jpg,jpeg,giff', 'image'],
+            'image' => ['nullable', 'mimes:png,jpg,jpeg,giff', 'image'],
             'status' => ['required', 'integer'],
             'priority' => ['required', 'integer'],
             'venue' => ['required', 'string', 'max:255'],
