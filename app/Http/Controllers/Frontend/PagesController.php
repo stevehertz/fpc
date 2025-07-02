@@ -88,13 +88,13 @@ class PagesController extends Controller
 
     public function becomeMember()
     {
-        $filePath = public_path('membership/FPC-Kenya-Registration-Form-2020.docx');
+        $filePath = public_path('membership/FPCKenya-registration-form-2025.docx');
 
         if (!file_exists($filePath)) {
             abort(404);
         }
 
-        return response()->download($filePath, "FPC-Kenya-Registration-Form-2020.docx", [
+        return response()->download($filePath, "FPCKenya-registration-form-2025.docx", [
             'Content-Type' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
         ]);
 
